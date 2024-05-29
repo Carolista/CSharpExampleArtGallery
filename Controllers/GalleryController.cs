@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CSharpExampleArtGallery;
 
-// With conventional routing the base route is /gallery
+// With conventional routing, the base route is /gallery
 // because it is named GalleryController
 public class GalleryController : Controller
 {
