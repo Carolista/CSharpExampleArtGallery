@@ -16,9 +16,8 @@ public class ArtworksController : Controller
         { 5, "The Starry Night" },
     };
 
-    // Corresponds to http://localhost:50xx/artworks
-    [HttpGet]
-    [Route("")] // This could also be left out entirely as the base route
+    // Endpoint: GET http://localhost:50xx/artworks
+    [HttpGet] // or [HttpGet("")]
     public IActionResult RenderArtworksPage()
     {
         StringBuilder artworksList = new();
@@ -32,67 +31,52 @@ public class ArtworksController : Controller
                 .Append(artwork)
                 .Append("</a></li>");
         }
-        string html = "<html>" +
-            "<body>" +
+        string html =
             "<h2>ARTWORKS</h2>" +
             "<ul>" +
             artworksList +
             "</ul>" +
-            "<p>Click <a href='/artworks/add'>here</a> to add another artwork.</p>" +
-            "</body>" +
-            "</html>";
+            "<p>Click <a href='/artworks/add'>here</a> to add another artwork.</p>";
         return Content(html, "text/html");
     }
 
-    // Corresponds to http://localhost:50xx/artworks/add for GET
-    [HttpGet]
-    [Route("add")]
+    // Endpoint: GET http://localhost:50xx/artworks/add
+    [HttpGet("add")]
     public IActionResult RenderAddArtworkForm()
     {
-        string html = "<html>" +
-            "<body>" +
+        string html =
             "<form action='/artworks/add' method='POST'>" +
             "<p>Enter the name of a new work of art:</p>" +
             "<input type='text' name='artwork' />" +
             "<button type='submit'>Submit</button>" +
-            "</form>" +
-            "</body>" +
-            "</html>";
+            "</form>";
         return Content(html, "text/html");
     }
 
-    // Corresponds to http://localhost:50xx/artworks/add for POST
-    [HttpPost]
-    [Route("add")]
+    // Endpoint: POST http://localhost:50xx/artworks/add 
+    // Parameter has same name as incoming form data
+    [HttpPost("add")]
     public IActionResult ProcessAddArtworkForm(string artwork)
     {
         artworks.Add(nextId, artwork);
         nextId++;
-        string html = "<html>" +
-            "<body>" +
+        string html =
             "<h3>ARTWORK ADDED</h3>" +
             "<p>You have successfully added " + artwork + " to the collection.</p>" +
-            "<p><a href='/artworks/add'>Add another artwork</a> or <a href='/artworks'>view the updated list</a> of artworks.</p>" +
-            "</body>" +
-            "</html>";
+            "<p><a href='/artworks/add'>Add another artwork</a> or <a href='/artworks'>view the updated list</a> of artworks.</p>";
         return Content(html, "text/html");
     }
 
-    // Corresponds to http://localhost:50xx/artworks/details/42
-    [HttpGet]
-    [Route("details/{artworkId}")]
+    // Endpoint: GET http://localhost:50xx/artworks/details/42
+    [HttpGet("details/{artworkId}")] // Path parameter
     public IActionResult RenderArtworkDetailsPage(int artworkId)
     {
-        Console.WriteLine(artworkId);
-        string html = "<html>" +
-            "<body>" +
+        string html =
             "<h3>Artwork</h3>" +
             "<p><b>ID:</b> " + artworkId + "</p>" +
             "<p><b>Name:</b> " + artworks[artworkId] + "</p>" +
             "<hr />" +
-            "<p>Return to the full <a href='/artworks'>list</a> of artworks.</p>" +
-            "</body>" +
-            "</html>";
+            "<p>Return to the full <a href='/artworks'>list</a> of artworks.</p>";
         return Content(html, "text/html");
     }
 }
