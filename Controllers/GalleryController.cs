@@ -10,9 +10,7 @@ public class GalleryController : Controller
     // Endpoint: GET /gallery (same as /gallery/index.html)
     public IActionResult Index() 
     {
-        string html =
-            "<p>Welcome! View our <a href='/gallery/collection'>collection</a> of fine art.</p>";
-        return Content(html, "text/html");
+        return Content("<h1>Welcome!</h1>", "text/html");
     }
 
     /* ARTWORKS */
