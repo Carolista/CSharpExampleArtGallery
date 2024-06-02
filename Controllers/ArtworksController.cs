@@ -16,6 +16,9 @@ public class ArtworksController : Controller
         { 5, "The Starry Night" },
     };
 
+    // TODO: Use a template for /artworks
+    // Pass list of artworks to template using a ViewBag
+
     // Endpoint: GET http://localhost:50xx/artworks
     [HttpGet] // or [HttpGet("")]
     public IActionResult RenderArtworksPage()
@@ -25,11 +28,9 @@ public class ArtworksController : Controller
         {
             string artwork = artworks[artworkId];
             artworksList
-                .Append("<li><a href='/artworks/details/")
-                .Append(artworkId)
-                .Append("'>")
+                .Append("<li>")
                 .Append(artwork)
-                .Append("</a></li>");
+                .Append("</li>");
         }
         string html =
             "<h2>ARTWORKS</h2>" +
@@ -39,6 +40,8 @@ public class ArtworksController : Controller
             "<p>Click <a href='/artworks/add'>here</a> to add another artwork.</p>";
         return Content(html, "text/html");
     }
+
+    // TODO: Use a template for /artworks/add
 
     // Endpoint: GET http://localhost:50xx/artworks/add
     [HttpGet("add")]
@@ -53,6 +56,9 @@ public class ArtworksController : Controller
         return Content(html, "text/html");
     }
 
+    // TODO: Instead of providing a template for a confirmation page,
+    // Redirect to /artworks
+
     // Endpoint: POST http://localhost:50xx/artworks/add 
     // Parameter has same name as incoming form data
     [HttpPost("add")]
@@ -64,19 +70,6 @@ public class ArtworksController : Controller
             "<h3>ARTWORK ADDED</h3>" +
             "<p>You have successfully added " + artwork + " to the collection.</p>" +
             "<p><a href='/artworks/add'>Add another artwork</a> or <a href='/artworks'>view the updated list</a> of artworks.</p>";
-        return Content(html, "text/html");
-    }
-
-    // Endpoint: GET http://localhost:50xx/artworks/details/42
-    [HttpGet("details/{artworkId}")] // Path parameter
-    public IActionResult RenderArtworkDetailsPage(int artworkId)
-    {
-        string html =
-            "<h3>Artwork</h3>" +
-            "<p><b>ID:</b> " + artworkId + "</p>" +
-            "<p><b>Name:</b> " + artworks[artworkId] + "</p>" +
-            "<hr />" +
-            "<p>Return to the full <a href='/artworks'>list</a> of artworks.</p>";
         return Content(html, "text/html");
     }
 }
