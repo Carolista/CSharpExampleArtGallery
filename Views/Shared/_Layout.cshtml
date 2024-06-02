@@ -3,17 +3,20 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @* TODO: Change title for browser tab *@
+    @* TODO 1: Edit title for browser tab *@
     <title>@ViewData["Title"] - CSharpExampleArtGallery</title>
+    @* TODO 6: Move all links to a partial *@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    @* TODO: Remove link to nonexistent stylesheet *@
+    @* TODO 1: Remove link for nonexistent stylesheet *@
     <link rel="stylesheet" href="~/CSharpExampleArtGallery.styles.css" asp-append-version="true" />
-    @* TODO: Add Google fonts links *@
+    @* TODO 7: Add Google fonts links *@
 </head>
 <body>
 
-    @* TODO: Replace default content in header *@
+    @* TODO 1: Remove default content from header *@
+    @* TODO 5: Add new content to header *@
+    @* TODO 6: Move nav portion of header to a partial *@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -36,21 +39,20 @@
         </nav>
     </header>
 
-    @* TODO: Remove div and classes *@
+    @* TODO 1: Remove div and classes *@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    @* TODO: Delete footer *@
+    @* TODO 1: Remove footer *@
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2024 - CSharpExampleArtGallery - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
 
-    @* TODO: Remove all scripts *@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

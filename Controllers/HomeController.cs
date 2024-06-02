@@ -6,8 +6,6 @@ namespace CSharpExampleArtGallery.Controllers;
 
 public class HomeController : Controller
 {
-    // TODO: Remove logger-related code
-
     private readonly ILogger<HomeController> _logger;
 
     public HomeController(ILogger<HomeController> logger)
@@ -15,20 +13,18 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    // TODO: This is already set to render contents of /Views/Home/Index.cshtml
-    // Update that template with a link to /artworks
+    // TODO 2: This is already set to load /Views/Home/Index.cshtml
+    // Go to that file and make some changes
     public IActionResult Index()
     {
         return View();
     }
 
-    // TODO: Remove this and Privacy.cshtml
     public IActionResult Privacy()
     {
         return View();
     }
 
-    // Leave this as-is for now
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

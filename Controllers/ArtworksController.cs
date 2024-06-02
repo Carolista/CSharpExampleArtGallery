@@ -20,9 +20,13 @@ public class ArtworksController : Controller
     [HttpGet] // or [HttpGet("")]
     public IActionResult RenderArtworksPage()
     {
-        // TODO: Use a template for /artworks
+        // TODO 3: Use a template for /artworks
         // Pass list of artworks to template using a ViewBag
-        // Later, pass a dictionary of KVPs for second nav menu
+        // Iterate in template to generate table rows
+
+        // TODO 4: Add conditional content in template if dictionary is empty
+
+        // TODO 5: Pass a dictionary (string/string) for second nav menu
 
         StringBuilder artworksList = new();
         foreach (int artworkId in artworks.Keys)
@@ -46,8 +50,8 @@ public class ArtworksController : Controller
     [HttpGet("add")]
     public IActionResult RenderAddArtworkForm()
     {
-        // TODO: Use a template for /artworks/add
-        // Later, pass a dictionary of KVPs for second nav menu
+        // TODO 3: Use a template for /artworks/add
+        // TODO 5: Pass a dictionary of KVPs for second nav menu
 
         string html =
             "<form action='/artworks/add' method='POST'>" +
@@ -66,7 +70,7 @@ public class ArtworksController : Controller
         artworks.Add(nextId, artwork);
         nextId++;
 
-        // TODO: Instead of providing a template for a confirmation page,
+        // TODO 2: Instead of providing a template for a confirmation page,
         // redirect to /artworks
         string html =
             "<h3>ARTWORK ADDED</h3>" +
