@@ -3,12 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @* TODO: Change title for browser tab *@
-    <title>@ViewData["Title"] - CSharpExampleArtGallery</title>
+    <title>@ViewData["Title"] - Midtown Art Gallery</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    @* TODO: Remove link to nonexistent stylesheet *@
-    <link rel="stylesheet" href="~/CSharpExampleArtGallery.styles.css" asp-append-version="true" />
 </head>
 <body>
 
@@ -35,24 +32,16 @@
         </nav>
     </header>
 
-    @* TODO: Alter bootstrap classes as needed *@
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <main role="main">
+        @RenderBody()
+    </main>
 
     @* TODO: Replace default content in footer *@
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - CSharpExampleArtGallery - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024
         </div>
     </footer>
 
-    @* TODO: Remove scripts *@
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

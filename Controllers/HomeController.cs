@@ -1,29 +1,14 @@
 using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 using CSharpExampleArtGallery.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CSharpExampleArtGallery.Controllers;
 
 public class HomeController : Controller
 {
-    // TODO: Remove logger-related code
+    public HomeController() { }
 
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
-    }
-
-    // TODO: This is already set to render contents of /Views/Home/Index.cshtml
-    // Update that template with "welcome" header and a link to /artworks
     public IActionResult Index()
-    {
-        return View();
-    }
-
-    // TODO: Remove this and Privacy.cshtml
-    public IActionResult Privacy()
     {
         return View();
     }
@@ -32,6 +17,8 @@ public class HomeController : Controller
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        return View(
+            new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier }
+        );
     }
 }
