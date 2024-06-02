@@ -26,8 +26,6 @@ public class ArtworksController : Controller
 
         // TODO 4: Add conditional content in template if dictionary is empty
 
-        // TODO 5: Pass a dictionary (string/string) for second nav menu
-
         StringBuilder artworksList = new();
         foreach (int artworkId in artworks.Keys)
         {
@@ -51,7 +49,6 @@ public class ArtworksController : Controller
     public IActionResult RenderAddArtworkForm()
     {
         // TODO 3: Use a template for /artworks/add
-        // TODO 5: Pass a dictionary of KVPs for second nav menu
 
         string html =
             "<form action='/artworks/add' method='POST'>" +
