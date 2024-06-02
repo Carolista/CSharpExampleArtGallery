@@ -20,11 +20,11 @@ public class ArtworksController : Controller
     [HttpGet] // or [HttpGet("")]
     public IActionResult RenderArtworksPage()
     {
-        // TODO 3: Use a template for /artworks
+        // TODO 4: Use a template for /artworks
         // Pass list of artworks to template using a ViewBag
         // Iterate in template to generate table rows
 
-        // TODO 4: Add conditional content in template if dictionary is empty
+        // TODO 5: Add conditional content in template if dictionary is empty
 
         StringBuilder artworksList = new();
         foreach (int artworkId in artworks.Keys)
