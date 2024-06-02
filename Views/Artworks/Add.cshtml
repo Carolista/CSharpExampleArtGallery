@@ -6,7 +6,7 @@
     <div class="nav">
         @foreach(KeyValuePair<string, string> link in ViewBag.links)
         {
-            <a class="navlink" asp-area="" asp-controller="Artworks" asp-action="@link.Key">@link.Value</a>
+            <a class="navlink" asp-controller="Artworks" asp-action="@link.Key">@link.Value</a>
         }
     </div>
 </div>
