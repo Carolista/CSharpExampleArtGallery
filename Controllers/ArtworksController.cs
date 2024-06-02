@@ -16,13 +16,14 @@ public class ArtworksController : Controller
         { 5, "The Starry Night" },
     };
 
-    // TODO: Use a template for /artworks
-    // Pass list of artworks to template using a ViewBag
-
     // Endpoint: GET http://localhost:50xx/artworks
     [HttpGet] // or [HttpGet("")]
     public IActionResult RenderArtworksPage()
     {
+        // TODO: Use a template for /artworks
+        // Pass list of artworks to template using a ViewBag
+        // Later, pass a dictionary of KVPs for second nav menu
+
         StringBuilder artworksList = new();
         foreach (int artworkId in artworks.Keys)
         {
@@ -41,12 +42,13 @@ public class ArtworksController : Controller
         return Content(html, "text/html");
     }
 
-    // TODO: Use a template for /artworks/add
-
     // Endpoint: GET http://localhost:50xx/artworks/add
     [HttpGet("add")]
     public IActionResult RenderAddArtworkForm()
     {
+        // TODO: Use a template for /artworks/add
+        // Later, pass a dictionary of KVPs for second nav menu
+
         string html =
             "<form action='/artworks/add' method='POST'>" +
             "<p>Enter the name of a new work of art:</p>" +
@@ -56,9 +58,6 @@ public class ArtworksController : Controller
         return Content(html, "text/html");
     }
 
-    // TODO: Instead of providing a template for a confirmation page,
-    // Redirect to /artworks
-
     // Endpoint: POST http://localhost:50xx/artworks/add 
     // Parameter has same name as incoming form data
     [HttpPost("add")]
@@ -66,6 +65,9 @@ public class ArtworksController : Controller
     {
         artworks.Add(nextId, artwork);
         nextId++;
+
+        // TODO: Instead of providing a template for a confirmation page,
+        // redirect to /artworks
         string html =
             "<h3>ARTWORK ADDED</h3>" +
             "<p>You have successfully added " + artwork + " to the collection.</p>" +

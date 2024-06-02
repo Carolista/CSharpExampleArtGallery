@@ -16,7 +16,7 @@ public class HomeController : Controller
     }
 
     // TODO: This is already set to render contents of /Views/Home/Index.cshtml
-    // Update that template with "welcome" header and a link to /artworks
+    // Update that template with a link to /artworks
     public IActionResult Index()
     {
         return View();
