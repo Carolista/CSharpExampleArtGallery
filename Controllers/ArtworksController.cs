@@ -16,48 +16,26 @@ public class ArtworksController : Controller
         { 5, "The Starry Night" },
     };
 
-    // TODO: Use a template for /artworks
-    // Pass list of artworks to template using a ViewBag
-
     // Endpoint: GET http://localhost:50xx/artworks
-    [HttpGet] // or [HttpGet("")]
-    public IActionResult RenderArtworksPage()
+    [HttpGet]
+    public IActionResult Index() // Action method name must match template name
     {
-        StringBuilder artworksList = new();
-        foreach (int artworkId in artworks.Keys)
-        {
-            string artwork = artworks[artworkId];
-            artworksList
-                .Append("<li>")
-                .Append(artwork)
-                .Append("</li>");
-        }
-        string html =
-            "<h2>ARTWORKS</h2>" +
-            "<ul>" +
-            artworksList +
-            "</ul>" +
-            "<p>Click <a href='/artworks/add'>here</a> to add another artwork.</p>";
-        return Content(html, "text/html");
+        ViewBag.links = new Dictionary<string, string>() {
+            { "Add", "Add New Artwork" }
+        };
+        ViewBag.artworkList = artworks.Values;
+        return View();
     }
-
-    // TODO: Use a template for /artworks/add
 
     // Endpoint: GET http://localhost:50xx/artworks/add
     [HttpGet("add")]
-    public IActionResult RenderAddArtworkForm()
+    public IActionResult Add()
     {
-        string html =
-            "<form action='/artworks/add' method='POST'>" +
-            "<p>Enter the name of a new work of art:</p>" +
-            "<input type='text' name='artwork' />" +
-            "<button type='submit'>Submit</button>" +
-            "</form>";
-        return Content(html, "text/html");
+        ViewBag.links = new Dictionary<string, string>() {
+            { "Index", "View All Artworks" }
+        };
+        return View();
     }
-
-    // TODO: Instead of providing a template for a confirmation page,
-    // Redirect to /artworks
 
     // Endpoint: POST http://localhost:50xx/artworks/add 
     // Parameter has same name as incoming form data
@@ -66,10 +44,6 @@ public class ArtworksController : Controller
     {
         artworks.Add(nextId, artwork);
         nextId++;
-        string html =
-            "<h3>ARTWORK ADDED</h3>" +
-            "<p>You have successfully added " + artwork + " to the collection.</p>" +
-            "<p><a href='/artworks/add'>Add another artwork</a> or <a href='/artworks'>view the updated list</a> of artworks.</p>";
-        return Content(html, "text/html");
+        return Redirect("/artworks");
     }
 }

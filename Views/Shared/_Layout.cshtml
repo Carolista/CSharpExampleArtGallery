@@ -3,15 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Midtown Art Gallery</title>
+    <title>@ViewData["Title"] | Midtown Art Gallery</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
 
-    @* TODO: Replace default content in header *@
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CSharpExampleArtGallery</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -29,19 +28,24 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> *@
+        <div id="mag">Midtown Art Gallery</div>
+        <div class="navbar">
+            @* FIXME: Format nav links correctly *@
+            @* TODO: Check overlap with Bootstrap classes *@
+            <span id="admin-portal" class="bold">
+                <a asp-area="" asp-controller="Home" asp-action="Index">ADMIN PORTAL</a>
+            </span> | &nbsp;
+            Artists
+            <a class="navlink" asp-area="" asp-controller="Artworks" asp-action="Index">Artworks</a>
+            <a class="navlink" asp-area="" asp-controller="Artworks" asp-action="Add">Add an Artwork</a>
+            Styles
+        </div>
     </header>
 
     <main role="main">
         @RenderBody()
     </main>
-
-    @* TODO: Replace default content in footer *@
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024
-        </div>
-    </footer>
 
 </body>
 </html>

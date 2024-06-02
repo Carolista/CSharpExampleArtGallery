@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "OUR COLLECTION";
+}
+
+<div id="admin-bar">
+    <div class="nav">
+        @foreach(KeyValuePair<string, string> link in ViewBag.links)
+        {
+            <a class="navlink" asp-area="" asp-controller="Artworks" asp-action="@link.Key">@link.Value</a>
+        }
+    </div>
+</div>
+
+<div class="main">
+    <h2>ARTWORKS</h2>
+
+    @if(ViewBag.artworkList.Count > 0)
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            @foreach(string artwork in ViewBag.artworkList)
+            {
+                <tr>
+                    <td>@artwork</td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <em>No artworks to display.</em>
+    }
+</div>

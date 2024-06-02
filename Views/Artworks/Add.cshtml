@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "ADD ARTWORK";
+}
+
+<div id="admin-bar">
+    <div class="nav">
+        @foreach(KeyValuePair<string, string> link in ViewBag.links)
+        {
+            <a class="navlink" asp-area="" asp-controller="Artworks" asp-action="@link.Key">@link.Value</a>
+        }
+    </div>
+</div>
+
+<div class="main">
+    <h3>Add Artwork</h3>
+    <form method='POST'> <!-- implicitly sends to same route -->
+        <input type='text' name='artwork' />
+        <button type='submit'>Add to Collection</button>
+    </form>
+</div>
