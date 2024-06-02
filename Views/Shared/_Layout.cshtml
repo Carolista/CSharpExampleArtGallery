@@ -4,21 +4,32 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] | Midtown Art Gallery</title>
-    <partial name="/Views/Shared/_HeadLinksPartial.cshtml" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@200;400;700&family=Assistant:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
         <div id="mag">Midtown Art Gallery</div>
-        <partial name="/Views/Shared/_PrimaryNavPartial.cshtml" />
+        <div class="nav">
+            <span id="admin-portal" class="bold">
+                <a asp-controller="Home" asp-action="Index">ADMIN PORTAL</a>
+            </span> | &nbsp;
+            <span class="faux-link">Artists</span>
+            <a class="navlink" asp-controller="Artworks" asp-action="Index">Artworks</a>
+            <span class="faux-link">Styles</span>
+        </div>
     </header>
 
-    @if (ViewData["Controller"] != null && ViewBag.Links != null)
-    {
-        <partial name="/Views/Shared/_SecondNavPartial.cshtml" />
-    }
 
     <main role="main">
+        @if (ViewData["Controller"] != null && ViewBag.Links != null)
+        {
+            <partial name="/Views/Shared/_LocalNavPartial.cshtml" />
+        }
         @RenderBody()
     </main>
 
