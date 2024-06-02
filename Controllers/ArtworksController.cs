@@ -17,23 +17,23 @@ public class ArtworksController : Controller
 
     // Endpoint: GET http://localhost:50xx/artworks
     [HttpGet]
-    public IActionResult Index() // Action method name must match template name
+    public IActionResult RenderArtworksPage()
     {
         ViewBag.links = new Dictionary<string, string>() {
             { "Add", "Add New Artwork" }
         };
         ViewBag.artworkList = artworks.Values;
-        return View();
+        return View("Index"); // Name of template
     }
 
     // Endpoint: GET http://localhost:50xx/artworks/add
     [HttpGet("add")]
-    public IActionResult Add()
+    public IActionResult RenderAddArtworkForm()
     {
         ViewBag.links = new Dictionary<string, string>() {
             { "Index", "View All Artworks" }
         };
-        return View();
+        return View("Add"); // Name of template
     }
 
     // Endpoint: POST http://localhost:50xx/artworks/add 
@@ -43,6 +43,6 @@ public class ArtworksController : Controller
     {
         artworks.Add(nextId, artwork);
         nextId++;
-        return Redirect("/artworks");
+        return Redirect("/artworks"); // Route
     }
 }
