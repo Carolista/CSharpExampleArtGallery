@@ -13,6 +13,11 @@
         <partial name="/Views/Shared/_PrimaryNavPartial.cshtml" />
     </header>
 
+    @if (ViewData["Controller"] != null && ViewBag.Links != null)
+    {
+        <partial name="/Views/Shared/_SecondNavPartial.cshtml" />
+    }
+
     <main role="main">
         @RenderBody()
     </main>

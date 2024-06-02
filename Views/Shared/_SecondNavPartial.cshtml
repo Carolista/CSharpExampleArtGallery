@@ -1,0 +1,8 @@
+<div id="admin-bar">
+    <div class="nav">
+        @foreach(KeyValuePair<string, string> link in ViewBag.Links)
+        {
+            <a class="navlink" asp-controller="@ViewData["Controller"]" asp-action="@link.Key">@link.Value</a>
+        }
+    </div>
+</div>

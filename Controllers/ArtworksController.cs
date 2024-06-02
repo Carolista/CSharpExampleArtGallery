@@ -19,10 +19,7 @@ public class ArtworksController : Controller
     [HttpGet]
     public IActionResult RenderArtworksPage()
     {
-        ViewBag.links = new Dictionary<string, string>() {
-            { "Add", "Add New Artwork" }
-        };
-        ViewBag.artworkList = artworks.Values;
+        ViewBag.ArtworkList = artworks.Values;
         return View("Index"); // Name of template
     }
 
@@ -30,9 +27,6 @@ public class ArtworksController : Controller
     [HttpGet("add")]
     public IActionResult RenderAddArtworkForm()
     {
-        ViewBag.links = new Dictionary<string, string>() {
-            { "Index", "View All Artworks" }
-        };
         return View("Add"); // Name of template
     }
 

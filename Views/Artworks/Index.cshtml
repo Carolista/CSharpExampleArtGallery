@@ -1,15 +1,11 @@
 @{
     ViewData["Title"] = "OUR COLLECTION";
-}
-
-<div id="admin-bar">
-    <div class="nav">
-        @foreach(KeyValuePair<string, string> link in ViewBag.links)
+    ViewData["Controller"] = "Artworks";
+    ViewBag.Links = new Dictionary<string, string> 
         {
-            <a class="navlink" asp-controller="Artworks" asp-action="@link.Key">@link.Value</a>
-        }
-    </div>
-</div>
+            { "Add", "Add a New Artwork"}
+        };
+}
 
 <div class="main">
     <h2>ARTWORKS</h2>
