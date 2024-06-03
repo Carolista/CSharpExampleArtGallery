@@ -26,7 +26,7 @@ public class ArtworksController : Controller
 
     // TODO 6: Refactor to retrieve list from ArtworksData
 
-    // Endpoint: GET http://localhost:50xx/artworks
+    // Endpoint: GET http://localhost:5xxx/artworks
     [HttpGet]
     public IActionResult RenderArtworksPage()
     {
@@ -34,7 +34,7 @@ public class ArtworksController : Controller
         return View("Index"); // Name of template
     }
 
-    // Endpoint: GET http://localhost:50xx/artworks/add
+    // Endpoint: GET http://localhost:5xxx/artworks/add
     [HttpGet("add")]
     public IActionResult RenderAddArtworkForm()
     {
@@ -47,8 +47,9 @@ public class ArtworksController : Controller
     // TODO 6: Refactor to save Artwork object to ArtworksData
 
     // TODO 8: Refactor again for model binding
+    // Add no-arg constructor to Artwork
 
-    // Endpoint: POST http://localhost:50xx/artworks/add 
+    // Endpoint: POST http://localhost:5xxx/artworks/add 
     // Parameter has same name as incoming form data
     [HttpPost("add")]
     public IActionResult ProcessAddArtworkForm(string artwork)
