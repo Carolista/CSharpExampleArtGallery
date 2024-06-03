@@ -10,7 +10,7 @@
 <div class="main">
     <h2>ARTWORKS</h2>
 
-    @if(ViewBag.ArtworkList?.Count > 0)
+    @if(ViewBag.ArtworksList?.Count > 0)
     {
         <table class="table table-striped">
             <thead>
@@ -19,7 +19,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach(string artwork in ViewBag.ArtworkList)
+                @foreach(string artwork in ViewBag.ArtworksList)
                 {
                     <tr>
                         <td>@artwork</td>
