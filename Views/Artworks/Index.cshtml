@@ -1,7 +1,7 @@
 @{
     ViewData["Title"] = "OUR COLLECTION";
     ViewData["Controller"] = "Artworks";
-    ViewBag.Links = new Dictionary<string, string> 
+    ViewBag.Links = new Dictionary<string, string>() 
         {
             { "Add", "Add a New Artwork"}
         };
@@ -10,7 +10,7 @@
 <div class="main">
     <h2>ARTWORKS</h2>
 
-    @if(ViewBag.artworkList.Count > 0)
+    @if(ViewBag.ArtworkList?.Count > 0)
     {
         <table class="table table-striped">
             <thead>
@@ -18,12 +18,14 @@
                     <th>Title</th>
                 </tr>
             </thead>
-            @foreach(string artwork in ViewBag.artworkList)
-            {
-                <tr>
-                    <td>@artwork</td>
-                </tr>
-            }
+            <tbody>
+                @foreach(string artwork in ViewBag.ArtworkList)
+                {
+                    <tr>
+                        <td>@artwork</td>
+                    </tr>
+                }
+            </tbody>
         </table>
     }
     else
