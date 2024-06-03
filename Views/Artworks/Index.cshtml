@@ -14,17 +14,20 @@
 
     @if(ViewBag.artworkList.Count > 0)
     {
-        @* TODO 4: Modify to display title and artist *@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Title</th>
+                    <th>Artist</th>
                 </tr>
             </thead>
-            @foreach(string artwork in ViewBag.artworkList)
+            @foreach(Artwork artwork in ViewBag.artworkList)
             {
                 <tr>
-                    <td>@artwork</td>
+                    <td>@artwork.Id</td>
+                    <td>@artwork.Title</td>
+                    <td>@artwork.Artist</td>
                 </tr>
             }
         </table>

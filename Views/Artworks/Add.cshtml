@@ -11,10 +11,12 @@
 
 <div class="main">
     <h3>Add Artwork</h3>
-    <form method="POST">=
-        @* TODO 2: Modify form to accept input for title and artist *@
+    <form method="POST">
         <div class="form-item col-4">
-            <input type="text" name="artwork" placeholder="Title" />
+            <input type="text" name="title" placeholder="Title" />
+        </div>
+        <div class="form-item col-4">
+            <input type="text" name="artist" placeholder="Artist" />
         </div>
         <button type="submit">Add to Collection</button>
     </form>

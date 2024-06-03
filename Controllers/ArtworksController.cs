@@ -6,23 +6,11 @@ namespace CSharpExampleArtGallery;
 public class ArtworksController : Controller
 {
 
-    // TODO 1: Create an Artwork model with properties Id, Title, and Artist
-    
-    // TODO 3: Modify Dictionary to hold Artwork objects instead of strings
-
     // TODO 5: Create ArtworksData class to serve as data layer
 
     // TEST DATA - simulate database
-    private static int nextId = 6;
-    private static readonly Dictionary<int, string> artworks = new() {
-        { 1, "Girl with a Pearl Earring" },
-        { 2, "Mona Lisa" },
-        { 3, "The Birth of Venus" },
-        { 4, "The Persistence of Memory" },
-        { 5, "The Starry Night" },
-    };
-
-    // TODO 4: Pass list of Artworks objects, not strings
+    private static int nextId = 1;
+    private static readonly Dictionary<int, Artwork> artworks = [];
 
     // TODO 6: Refactor to retrieve list from ArtworksData
 
@@ -30,7 +18,7 @@ public class ArtworksController : Controller
     [HttpGet]
     public IActionResult RenderArtworksPage()
     {
-        ViewBag.ArtworkList = artworks.Values;
+        ViewBag.ArtworkList = artworks.Values; // Loosely typed
         return View("Index"); // Name of template
     }
 
@@ -41,9 +29,6 @@ public class ArtworksController : Controller
         return View("Add"); // Name of template
     }
 
-    // TODO 3: Modify to accept title and artist,
-    // create Artwork object, and set in dictionary above
-
     // TODO 6: Refactor to save Artwork object to ArtworksData
 
     // TODO 8: Refactor again for model binding
@@ -51,9 +36,9 @@ public class ArtworksController : Controller
     // Endpoint: POST http://localhost:50xx/artworks/add 
     // Parameter has same name as incoming form data
     [HttpPost("add")]
-    public IActionResult ProcessAddArtworkForm(string artwork)
+    public IActionResult ProcessAddArtworkForm(string title, string artist)
     {
-        artworks.Add(nextId, artwork);
+        artworks.Add(nextId, new Artwork(title, artist));
         nextId++;
         return Redirect("/artworks"); // Route
     }
