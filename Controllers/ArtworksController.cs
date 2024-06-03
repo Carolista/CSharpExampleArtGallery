@@ -9,7 +9,7 @@ public class ArtworksController : Controller
     [HttpGet]
     public IActionResult RenderArtworksPage()
     {
-        ViewBag.ArtworkList = ArtworksData.GetAll();
+        ViewBag.ArtworksList = ArtworksData.GetAll();
         return View("Index"); // Name of template
     }
 

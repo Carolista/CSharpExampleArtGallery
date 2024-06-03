@@ -11,7 +11,7 @@
 <div class="main">
     <h2>ARTWORKS</h2>
 
-    @if(ViewBag.artworkList.Count > 0)
+    @if(ViewBag.ArtworksList.Count > 0)
     {
         <table class="table table-striped">
             <thead>
@@ -21,7 +21,7 @@
                     <th>Artist</th>
                 </tr>
             </thead>
-            @foreach(Artwork artwork in ViewBag.ArtworkList)
+            @foreach(Artwork artwork in ViewBag.ArtworksList)
             {
                 <tr>
                     <td>@artwork.Id</td>
