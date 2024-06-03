@@ -12,7 +12,7 @@
     <h3>Delete Artworks</h3>
     <form method="POST">
         <div class="checkbox-group">
-            @foreach (var artwork in ViewBag.ArtworksList)
+            @foreach (Artwork artwork in ViewBag.ArtworksList)
             {
                 <label>
                     <input type="checkbox" name="artworkIds" value="@artwork.Id" />

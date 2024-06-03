@@ -9,12 +9,16 @@ public class Artwork
     public string Title { get; set; }
     public string Artist { get; set; }  
 
-    public Artwork(string title, string artist)
+    public Artwork()
+    {
+        Id = nextId;
+        nextId++;
+    }
+
+    public Artwork(string title, string artist): this()
     {
         Title = title;
         Artist = artist;
-        Id = nextId;
-        nextId++;
     }
 
     public override string ToString()

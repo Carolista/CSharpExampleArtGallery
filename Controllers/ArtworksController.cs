@@ -5,7 +5,6 @@ namespace CSharpExampleArtGallery;
 [Route("/artworks")]
 public class ArtworksController : Controller
 {
-
     // Endpoint: GET http://localhost:5xxx/artworks
     [HttpGet]
     public IActionResult RenderArtworksPage()
@@ -21,14 +20,12 @@ public class ArtworksController : Controller
         return View("Add"); // Name of template
     }
 
-    // TODO 8: Refactor again for model binding
-
     // Endpoint: POST http://localhost:5xxx/artworks/add 
     // Parameters have same name as incoming form data ANd model field
     [HttpPost("add")]
-    public IActionResult ProcessAddArtworkForm(string title, string artist)
+    public IActionResult ProcessAddArtworkForm(Artwork artwork)
     {
-        ArtworksData.Add(new Artwork(title, artist));
+        ArtworksData.Add(artwork);
         return Redirect("/artworks"); // Route
     }
 
