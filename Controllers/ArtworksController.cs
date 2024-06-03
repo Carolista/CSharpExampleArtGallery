@@ -6,7 +6,7 @@ namespace CSharpExampleArtGallery;
 public class ArtworksController : Controller
 {
 
-    // Endpoint: GET http://localhost:50xx/artworks
+    // Endpoint: GET http://localhost:5xxx/artworks
     [HttpGet]
     public IActionResult RenderArtworksPage()
     {
@@ -14,7 +14,7 @@ public class ArtworksController : Controller
         return View("Index"); // Name of template
     }
 
-    // Endpoint: GET http://localhost:50xx/artworks/add
+    // Endpoint: GET http://localhost:5xxx/artworks/add
     [HttpGet("add")]
     public IActionResult RenderAddArtworkForm()
     {
@@ -23,8 +23,8 @@ public class ArtworksController : Controller
 
     // TODO 8: Refactor again for model binding
 
-    // Endpoint: POST http://localhost:50xx/artworks/add 
-    // Parameter has same name as incoming form data
+    // Endpoint: POST http://localhost:5xxx/artworks/add 
+    // Parameters have same name as incoming form data ANd model field
     [HttpPost("add")]
     public IActionResult ProcessAddArtworkForm(string title, string artist)
     {
@@ -32,5 +32,22 @@ public class ArtworksController : Controller
         return Redirect("/artworks"); // Route
     }
 
-    // TODO 7: Create Delete template and GET & POST methods
+    // Endpoint: GET http://localhost:5xxx/artworks/delete
+    [HttpGet("delete")]
+    public IActionResult RenderDeleteArtworksForm()
+    {
+        ViewBag.ArtworksList = ArtworksData.GetAll();
+        return View("Delete"); // Name of template
+    }
+
+    // Endpoint: POST http://localhost:5xxx/artworks/delete?artworkIds=1&artworkIds=2 (etc)
+    [HttpPost("delete")]
+    public IActionResult ProcessDeleteArtworksForm(int[] artworkIds)
+    {
+        foreach (int id in artworkIds)
+        {
+            ArtworksData.Remove(id);
+        }
+        return Redirect("/artworks"); // Route
+    }
 }

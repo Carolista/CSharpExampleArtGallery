@@ -118,16 +118,19 @@ a.navlink:hover, a.navlink:active {
     margin-bottom: 20px;
 }
 
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
 input {
-    height: 32px;
-    outline: 1px solid #666;
-    border: none; 
     border-radius: 4px;
+    padding-left: 8px;
 }
 
 input::placeholder {
     color: #888;
-    padding-left: 8px;
 }
 
 textarea {

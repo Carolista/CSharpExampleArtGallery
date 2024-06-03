@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "DELETE ARTWORKS";
+    ViewData["Controller"] = "Artworks";
+    ViewBag.Links = new Dictionary<string, string> 
+        {
+            { "Index", "View All Artworks"},
+            { "Add", "Add a New Artwork"}
+        };
+}
+
+<div class="main">
+    <h3>Delete Artworks</h3>
+    <form method="POST">
+        <div class="checkbox-group">
+            @foreach (var artwork in ViewBag.ArtworksList)
+            {
+                <label>
+                    <input type="checkbox" name="artworkIds" value="@artwork.Id" />
+                    <span>@artwork</span>
+                </label>
+            }
+        </div>
+        <button class="delete" type="submit">Delete</button>
+    </form>
+</div>

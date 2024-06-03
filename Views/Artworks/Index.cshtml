@@ -3,11 +3,10 @@
     ViewData["Controller"] = "Artworks";
     ViewBag.Links = new Dictionary<string, string> 
         {
-            { "Add", "Add a New Artwork"}
+            { "Add", "Add a New Artwork"},
+            { "Delete", "Delete Artworks" }
         };
 }
-
-@* TODO 7: Add info for link to Delete above *@
 
 <div class="main">
     <h2>ARTWORKS</h2>
@@ -22,7 +21,7 @@
                     <th>Artist</th>
                 </tr>
             </thead>
-            @foreach(Artwork artwork in ViewBag.artworkList)
+            @foreach(var artwork in ViewBag.ArtworkList)
             {
                 <tr>
                     <td>@artwork.Id</td>
