@@ -16,7 +16,7 @@ public class ArtworksController : Controller
         { 5, "The Starry Night" },
     };
 
-    // Endpoint: GET http://localhost:50xx/artworks
+    // Endpoint: GET http://localhost:5xxx/artworks
     [HttpGet] // or [HttpGet("")]
     public IActionResult RenderArtworksPage()
     {
@@ -40,7 +40,7 @@ public class ArtworksController : Controller
         return Content(html, "text/html");
     }
 
-    // Endpoint: GET http://localhost:50xx/artworks/add
+    // Endpoint: GET http://localhost:5xxx/artworks/add
     [HttpGet("add")]
     public IActionResult RenderAddArtworkForm()
     {
@@ -53,7 +53,7 @@ public class ArtworksController : Controller
         return Content(html, "text/html");
     }
 
-    // Endpoint: POST http://localhost:50xx/artworks/add 
+    // Endpoint: POST http://localhost:5xxx/artworks/add 
     // Parameter has same name as incoming form data
     [HttpPost("add")]
     public IActionResult ProcessAddArtworkForm(string artwork)
@@ -67,7 +67,7 @@ public class ArtworksController : Controller
         return Content(html, "text/html");
     }
 
-    // Endpoint: GET http://localhost:50xx/artworks/details/42
+    // Endpoint: GET http://localhost:5xxx/artworks/details/42
     [HttpGet("details/{artworkId}")] // Path parameter
     public IActionResult RenderArtworkDetailsPage(int artworkId)
     {
