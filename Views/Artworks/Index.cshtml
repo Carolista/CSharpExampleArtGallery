@@ -12,7 +12,7 @@
 <div class="main">
     <h2>ARTWORKS</h2>
 
-    @if(ViewBag.artworkList.Count > 0)
+    @if(ViewBag.ArtworksList.Count > 0)
     {
         @* TODO 4: Modify to display title and artist *@
         <table class="table table-striped">
@@ -21,7 +21,7 @@
                     <th>Title</th>
                 </tr>
             </thead>
-            @foreach(string artwork in ViewBag.artworkList)
+            @foreach(string artwork in ViewBag.ArtworksList)
             {
                 <tr>
                     <td>@artwork</td>

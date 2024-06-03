@@ -30,7 +30,7 @@ public class ArtworksController : Controller
     [HttpGet]
     public IActionResult RenderArtworksPage()
     {
-        ViewBag.ArtworkList = artworks.Values;
+        ViewBag.ArtworksList = artworks.Values;
         return View("Index"); // Name of template
     }
 
