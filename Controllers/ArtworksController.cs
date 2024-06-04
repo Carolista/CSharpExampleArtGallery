@@ -5,22 +5,23 @@ namespace CSharpExampleArtGallery;
 [Route("/artworks")]
 public class ArtworksController : Controller
 {
-
     // TODO 1: Create an Artwork model with properties Id, Title, and Artist
-    
+
     // TODO 3: Modify Dictionary to hold Artwork objects instead of strings
 
     // TODO 5: Create ArtworksData class to serve as data layer
 
     // TEST DATA - simulate database
     private static int nextId = 6;
-    private static readonly Dictionary<int, string> artworks = new() {
-        { 1, "Girl with a Pearl Earring" },
-        { 2, "Mona Lisa" },
-        { 3, "The Birth of Venus" },
-        { 4, "The Persistence of Memory" },
-        { 5, "The Starry Night" },
-    };
+    private static readonly Dictionary<int, string> artworks =
+        new()
+        {
+            { 1, "Girl with a Pearl Earring" },
+            { 2, "Mona Lisa" },
+            { 3, "The Birth of Venus" },
+            { 4, "The Persistence of Memory" },
+            { 5, "The Starry Night" },
+        };
 
     // TODO 4: Pass list of Artworks objects, not strings
 
@@ -49,7 +50,7 @@ public class ArtworksController : Controller
     // TODO 8: Refactor again for model binding
     // Add no-arg constructor to Artwork
 
-    // Endpoint: POST http://localhost:5xxx/artworks/add 
+    // Endpoint: POST http://localhost:5xxx/artworks/add
     // Parameter has same name as incoming form data
     [HttpPost("add")]
     public IActionResult ProcessAddArtworkForm(string artwork)
