@@ -20,7 +20,7 @@ public class ArtworksController : Controller
         return View("Add"); // Name of template
     }
 
-    // Endpoint: POST http://localhost:5xxx/artworks/add 
+    // Endpoint: POST http://localhost:5xxx/artworks/add
     // Parameters have same name as incoming form data ANd model field
     [HttpPost("add")]
     public IActionResult ProcessAddArtworkForm(Artwork artwork)
