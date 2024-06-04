@@ -2,7 +2,7 @@ namespace CSharpExampleArtGallery;
 
 public class ArtworksData
 {
-    static private Dictionary<int, Artwork> Artworks = [];
+    private static Dictionary<int, Artwork> Artworks = [];
 
     public static IEnumerable<Artwork> GetAll()
     {
