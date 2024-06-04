@@ -10,16 +10,23 @@
 
 <div class="main">
     <h3>Delete Artworks</h3>
-    <form method="POST">
-        <div class="checkbox-group">
-            @foreach (Artwork artwork in ViewBag.ArtworksList)
-            {
-                <label>
-                    <input type="checkbox" name="artworkIds" value="@artwork.Id" />
-                    <span>@artwork</span>
-                </label>
-            }
-        </div>
-        <button class="delete" type="submit">Delete</button>
-    </form>
+    @if (ViewBag.ArtworksList?.Count > 0)
+    {
+        <form method="POST">
+            <div class="checkbox-group">
+                @foreach (Artwork artwork in ViewBag.ArtworksList)
+                {
+                    <label>
+                        <input type="checkbox" name="artworkIds" value="@artwork.Id" />
+                        <span>@artwork</span>
+                    </label>
+                }
+            </div>
+            <button class="delete" type="submit">Delete</button>
+        </form>
+    }
+    else
+    {
+        <em>No artworks to display.</em>
+    }
 </div>
