@@ -33,14 +33,21 @@ public class ArtworksController : Controller
     [HttpPost("add")]
     public IActionResult ProcessAddArtworkForm(AddArtViewModel addArtViewModel)
     {
-        // Use object initializer syntax to create object
-        Artwork artwork = new()
+        // TODO 7: In ViewModel, Add validation attributes to require 
+        // title & artist and ensure artist's name is 2-30 characters long
+        // Then add logic below to send user back to form if invalid
+        if (ModelState.IsValid)
         {
-            Title = addArtViewModel.Title,
-            Artist = addArtViewModel.Artist
-        };
-        ArtworksData.Add(artwork);
-        return Redirect("/artworks"); // Route
+            // Use object initializer syntax to create object
+            Artwork artwork = new()
+            {
+                Title = addArtViewModel.Title,
+                Artist = addArtViewModel.Artist
+            };
+            ArtworksData.Add(artwork);
+            return Redirect("/artworks"); // Route
+        }
+        return View("Add", addArtViewModel);
     }
 
     // Endpoint: GET http://localhost:5xxx/artworks/delete

@@ -17,11 +17,14 @@
     @*TODO 6: Update form with asp-controller and asp-action attributes *@
     <form asp-controller="Artworks" asp-action="Add" method="POST">
         @* TODO 6: replace type/name with asp-for on inputs *@
+        @* TODO 8: Add spans with text-danger class for error msg *@
         <div class="form-item col-4">
             <input asp-for="Title" placeholder="Title" />
+            <span asp-validation-for="Title" class="text-danger"></span>
         </div>
         <div class="form-item col-4">
             <input asp-for="Artist" placeholder="Artist" />
+            <span asp-validation-for="Artist" class="text-danger"></span>
         </div>
         <button type="submit">Add to Collection</button>
     </form>
