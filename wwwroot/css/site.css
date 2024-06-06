@@ -151,8 +151,8 @@ button.delete {
     background-color: #B03A2E;
 }
 
-.error {
-    color: #B03A2E;
+.text-danger { 
+    color: #B03A2E !important; /* override Bootstrap */
     font-size: 0.9rem;
     margin: 0;
 }
