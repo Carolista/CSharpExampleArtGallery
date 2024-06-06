@@ -34,7 +34,7 @@ public class ArtworksController : Controller
         // TODO 7: In ViewModel, Add validation attributes to require 
         // title & artist and ensure artist's name is 2-30 characters long
         // Then add logic below to send user back to form if invalid
-        // TODO 9: Add required Style property and values to ViewModel and update code below
+        // TODO 10: Update code below to set Style with object
         ArtworksData.Add(artwork);
         return Redirect("/artworks"); // Route
     }

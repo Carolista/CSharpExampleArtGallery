@@ -12,6 +12,7 @@ public class Artwork
 
     // TODO 9: Create an enum, Style, and add a property here of that type
     // Update the constructor accordingly
+    // Add Style to ViewModel with values for list as well
 
     public Artwork()
     {
