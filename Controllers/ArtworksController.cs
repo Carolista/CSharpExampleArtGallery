@@ -8,8 +8,7 @@ public class ArtworksController : Controller
     // TODO 1: Create a ViewModel for the /Artworks/Add form
     
     // TODO 3: Update the GET action methods for Index and Delete to pass a List of Artwork objects (create from the IEnumerable object) instead of using a ViewBag
-
-    // TODO 5: Update the GET action method for Add to pass an AddArtViewModel object
+    // TODO 3: Update the GET action method for Add to pass an AddArtViewModel object
 
     // Endpoint: GET http://localhost:5xxx/artworks
     [HttpGet]
@@ -31,6 +30,7 @@ public class ArtworksController : Controller
     [HttpPost("add")]
     public IActionResult ProcessAddArtworkForm(Artwork artwork)
     {
+        // TODO 4: Update the POST method for Add to receive an object of ViewModel type and create Artwork object from its properties before saving
         // TODO 7: In ViewModel, Add validation attributes to require 
         // title & artist and ensure artist's name is 2-30 characters long
         // Then add logic below to send user back to form if invalid
