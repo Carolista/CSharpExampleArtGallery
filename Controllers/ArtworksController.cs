@@ -5,13 +5,6 @@ namespace CSharpExampleArtGallery;
 [Route("/artworks")]
 public class ArtworksController : Controller
 {
-
-    // TODO 1: Create a ViewModel for the /Artworks/Add form
-    
-    // TODO 3: Update the GET action methods for Index and Delete to pass a List of Artwork objects (create from the IEnumerable object) instead of using a ViewBag
-
-    // TODO 5: Update the GET action method for Add to pass an AddArtViewModel object
-
     // Endpoint: GET http://localhost:5xxx/artworks
     [HttpGet]
     public IActionResult RenderArtworksPage()
@@ -33,10 +26,6 @@ public class ArtworksController : Controller
     [HttpPost("add")]
     public IActionResult ProcessAddArtworkForm(AddArtViewModel addArtViewModel)
     {
-        // TODO 7: In ViewModel, Add validation attributes to require 
-        // title & artist and ensure artist's name is 2-30 characters long
-        // Then add logic below to send user back to form if invalid
-        // TODO 9: Add required Style property and values to ViewModel and update code below
         if (ModelState.IsValid)
         {
             // Use object initializer syntax to create object
