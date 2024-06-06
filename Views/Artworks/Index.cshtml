@@ -1,3 +1,5 @@
+@* TODO 4: Import the model and replace use of ViewBag.ArtworksList *@
+
 @{
     ViewData["Title"] = "OUR COLLECTION";
     ViewData["Controller"] = "Artworks";
@@ -13,6 +15,7 @@
 
     @if(ViewBag.ArtworksList?.Count > 0)
     {
+        @* TODO 11: Update table to display Style in 4th column *@
         <table class="table table-striped">
             <thead>
                 <tr>
