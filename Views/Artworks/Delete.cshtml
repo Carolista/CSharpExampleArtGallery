@@ -1,3 +1,7 @@
+@* TODO 4: Import the model and replace use of ViewBag.ArtworksList *@
+@using CSharpExampleArtGallery
+@model List<Artwork>
+
 @{
     ViewData["Title"] = "DELETE ARTWORKS";
     ViewData["Controller"] = "Artworks";
@@ -10,11 +14,11 @@
 
 <div class="main">
     <h3>Delete Artworks</h3>
-    @if (ViewBag.ArtworksList?.Count > 0)
+    @if (Model.Count > 0)
     {
         <form method="POST">
             <div class="checkbox-group">
-                @foreach (Artwork artwork in ViewBag.ArtworksList)
+                @foreach (Artwork artwork in Model)
                 {
                     <label>
                         <input type="checkbox" name="artworkIds" value="@artwork.Id" />

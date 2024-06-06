@@ -1,3 +1,7 @@
+@* TODO 4: Import the model and replace use of ViewBag.ArtworksList *@
+@using CSharpExampleArtGallery
+@model List<Artwork>
+
 @{
     ViewData["Title"] = "OUR COLLECTION";
     ViewData["Controller"] = "Artworks";
@@ -11,7 +15,7 @@
 <div class="main">
     <h2>ARTWORKS</h2>
 
-    @if(ViewBag.ArtworksList?.Count > 0)
+    @if(Model.Count > 0)
     {
         <table class="table table-striped">
             <thead>
@@ -21,7 +25,7 @@
                     <th>Artist</th>
                 </tr>
             </thead>
-            @foreach(Artwork artwork in ViewBag.ArtworksList)
+            @foreach(Artwork artwork in Model)
             {
                 <tr>
                     <td>@artwork.Id</td>
