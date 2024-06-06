@@ -26,6 +26,10 @@
             <input asp-for="Artist" placeholder="Artist" />
             <span asp-validation-for="Artist" class="text-danger"></span>
         </div>
+        @* TODO 10: Add style select and span for error message *@
+        <div class="form-item col-4">
+            <select asp-for="Style" asp-items="Model.Styles"></select>
+        </div>
         <button type="submit">Add to Collection</button>
     </form>
 </div>

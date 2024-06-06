@@ -15,6 +15,7 @@
 <div class="main">
     <h2>ARTWORKS</h2>
 
+    @* TODO 11: Update table to display Style in 4th column *@
     @if(Model.Count > 0)
     {
         <table class="table table-striped">
@@ -23,6 +24,7 @@
                     <th>Id</th>
                     <th>Title</th>
                     <th>Artist</th>
+                    <th>Style</th>
                 </tr>
             </thead>
             @foreach(Artwork artwork in Model)
@@ -31,6 +33,7 @@
                     <td>@artwork.Id</td>
                     <td>@artwork.Title</td>
                     <td>@artwork.Artist</td>
+                    <td>@artwork.Style</td>
                 </tr>
             }
         </table>

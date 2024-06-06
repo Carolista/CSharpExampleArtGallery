@@ -10,17 +10,22 @@ public class Artwork
     public string? Title { get; set; }
     public string? Artist { get; set; }
 
+    // TODO 9: Create an enum, Style, and add a property here of that type
+    // Update the constructor accordingly
+    public Style Style { get; set; }
+
     public Artwork()
     {
         Id = nextId;
         nextId++;
     }
 
-    public Artwork(string title, string artist)
+    public Artwork(string title, string artist, Style style)
         : this()
     {
         Title = title;
         Artist = artist;
+        Style = style;
     }
 
     public override string ToString()
