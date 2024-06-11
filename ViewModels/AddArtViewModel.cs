@@ -18,16 +18,19 @@ public class AddArtViewModel
 
     public Style Style { get; set; }
 
-    public List<SelectListItem> Styles { get; set; } =
-        [
-            new SelectListItem(Style.ArtNouveau.ToString(), ((int)Style.ArtNouveau).ToString()),
-            new SelectListItem(Style.Baroque.ToString(), ((int)Style.Baroque).ToString()),
-            new SelectListItem(
-                Style.Impressionism.ToString(),
-                ((int)Style.Impressionism).ToString()
-            ),
-            new SelectListItem(Style.Pointillism.ToString(), ((int)Style.Pointillism).ToString()),
-            new SelectListItem(Style.Renaissance.ToString(), ((int)Style.Renaissance).ToString()),
-            new SelectListItem(Style.Surrealism.ToString(), ((int)Style.Surrealism).ToString())
-        ];
+    public List<SelectListItem> Styles { get; set; } = [];
+
+    // Added constructor to generate list items for select from styles
+    public AddArtViewModel()
+    {
+        List<Style> styleList = ((Style[])Enum.GetValues(typeof(Style)))
+            .OrderBy(s => s.ToString())
+            .ToList();
+        foreach (Style style in styleList)
+        {
+            Styles.Add(
+                new SelectListItem(Utils.GetDisplayName(style.ToString()), ((int)style).ToString())
+            );
+        }
+    }
 }

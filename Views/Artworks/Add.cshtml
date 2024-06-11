@@ -25,6 +25,7 @@
         </div>
         <div class="form-item col-4">
             <select asp-for="Style" asp-items="Model.Styles"></select>
+            <span asp-validation-for="Style" class="text-danger"></span>
         </div>
         <button type="submit">Add to Collection</button>
     </form>
