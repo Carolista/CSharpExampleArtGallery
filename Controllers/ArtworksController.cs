@@ -5,11 +5,18 @@ namespace CSharpExampleArtGallery;
 [Route("/artworks")]
 public class ArtworksController : Controller
 {
+    private ArtworkDbContext context;
+
+    public ArtworksController(ArtworkDbContext dbContext)
+    {
+        context = dbContext;
+    }
+
     // Endpoint: GET http://localhost:5xxx/artworks
     [HttpGet]
     public IActionResult RenderArtworksPage()
     {
-        List<Artwork> artworks = new(ArtworksData.GetAll());
+        List<Artwork> artworks = context.Artworks.ToList();
         return View("Index", artworks);
     }
 
@@ -22,21 +29,20 @@ public class ArtworksController : Controller
     }
 
     // Endpoint: POST http://localhost:5xxx/artworks/add
-    // Parameters have same name as incoming form data ANd model field
     [HttpPost("add")]
     public IActionResult ProcessAddArtworkForm(AddArtViewModel addArtViewModel)
     {
         if (ModelState.IsValid)
         {
-            // Use object initializer syntax to create object
             Artwork artwork = new()
             {
                 Title = addArtViewModel.Title,
                 Artist = addArtViewModel.Artist,
                 Style = addArtViewModel.Style
             };
-            ArtworksData.Add(artwork);
-            return Redirect("/artworks"); // Route
+            context.Artworks.Add(artwork); // save to list in DbSet object
+            context.SaveChanges(); // push change to database
+            return Redirect("/artworks");
         }
         return View("Add", addArtViewModel);
     }
@@ -45,7 +51,7 @@ public class ArtworksController : Controller
     [HttpGet("delete")]
     public IActionResult RenderDeleteArtworksForm()
     {
-        List<Artwork> artworks = new(ArtworksData.GetAll());
+        List<Artwork> artworks = context.Artworks.ToList();
         return View("Delete", artworks);
     }
 
@@ -55,8 +61,10 @@ public class ArtworksController : Controller
     {
         foreach (int id in artworkIds)
         {
-            ArtworksData.Remove(id);
+            Artwork? theArtwork = context.Artworks.Find(id);
+            context.Artworks.Remove(theArtwork); // remove one from list
         }
-        return Redirect("/artworks"); // Route
+        context.SaveChanges(); // after all have been removed from the list
+        return Redirect("/artworks");
     }
 }

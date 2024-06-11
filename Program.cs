@@ -14,6 +14,7 @@ var serverVersion = new MySqlServerVersion(new Version(8, 0, 31));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ArtworkDbContext>(dbContextOptions => dbContextOptions.UseMySql(connectionString, serverVersion));
 
 var app = builder.Build();
 
