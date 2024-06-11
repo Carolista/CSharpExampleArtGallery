@@ -2,18 +2,12 @@
 
 public class Artwork
 {
-    private static int nextId = 1;
-
-    public int Id { get; } // readonly
+    public int Id { get; set; }
     public string? Title { get; set; }
     public string? Artist { get; set; }
     public Style Style { get; set; }
 
-    public Artwork()
-    {
-        Id = nextId;
-        nextId++;
-    }
+    public Artwork() { }
 
     public Artwork(string title, string artist, Style style)
         : this()
