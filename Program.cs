@@ -3,18 +3,20 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-/* 
+/*
     General pattern:
     var connectionString = "server=localhost;user=username;password=password;database=database";
 */
 
 // Use string saved in secrets.json on local machine instead
-var connectionString = builder.Configuration["connectionStringMVCTest"];
+var connectionString = builder.Configuration["connectionStringArtGallery2024"];
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 31));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<ArtworkDbContext>(dbContextOptions => dbContextOptions.UseMySql(connectionString, serverVersion));
+builder.Services.AddDbContext<ArtworkDbContext>(dbContextOptions =>
+    dbContextOptions.UseMySql(connectionString, serverVersion)
+);
 
 var app = builder.Build();
 
@@ -33,8 +35,6 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
