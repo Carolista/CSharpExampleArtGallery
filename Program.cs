@@ -1,4 +1,16 @@
+using CSharpExampleArtGallery;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+/* 
+    General pattern:
+    var connectionString = "server=localhost;user=username;password=password;database=database";
+*/
+
+// Use string saved in secrets.json on local machine instead
+var connectionString = builder.Configuration["connectionStringMVCTest"];
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 31));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
