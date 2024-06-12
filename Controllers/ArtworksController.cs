@@ -5,7 +5,7 @@ namespace CSharpExampleArtGallery;
 [Route("/artworks")]
 public class ArtworksController : Controller
 {
-    private ArtworkDbContext context;
+    private readonly ArtworkDbContext context;
 
     public ArtworksController(ArtworkDbContext dbContext)
     {
@@ -62,7 +62,10 @@ public class ArtworksController : Controller
         foreach (int id in artworkIds)
         {
             Artwork? theArtwork = context.Artworks.Find(id);
-            context.Artworks.Remove(theArtwork); // remove one from list
+            if (theArtwork != null)
+            {
+                context.Artworks.Remove(theArtwork); // remove one from list
+            }
         }
         context.SaveChanges(); // after all have been removed from the list
         return Redirect("/artworks");
