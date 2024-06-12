@@ -26,5 +26,7 @@ public enum Style
     Realism = 22,
     StreetPhotography = 23,
     FreeVerse = 24,
-    NailArt = 25
+    NailArt = 25,
+    Woodcut = 26,
+    GeologicalArt = 27
 }
