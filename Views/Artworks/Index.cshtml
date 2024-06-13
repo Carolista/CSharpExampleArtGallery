@@ -31,7 +31,7 @@
                     <td>@artwork.Id</td>
                     <td>@artwork.Title</td>
                     <td>@artwork.Artist</td>
-                    <td>@artwork.Style</td>
+                    <td>@Utils.GetDisplayName(artwork.Style.ToString())</td>
                 </tr>
             }
         </table>

@@ -2,9 +2,11 @@
 
 public class Artwork
 {
+    // TODO 6: Remove nextId here and in constructor
     private static int nextId = 1;
 
-    public int Id { get; } // readonly
+    // TODO 6: Give Id a setter
+    public int Id { get; }
     public string? Title { get; set; }
     public string? Artist { get; set; }
     public Style Style { get; set; }

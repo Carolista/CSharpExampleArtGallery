@@ -5,6 +5,8 @@ namespace CSharpExampleArtGallery;
 [Route("/artworks")]
 public class ArtworksController : Controller
 {
+    // TODO 10: Update methods to use ArtworkDbContext class instead of ArtworksData
+
     // Endpoint: GET http://localhost:5xxx/artworks
     [HttpGet]
     public IActionResult RenderArtworksPage()

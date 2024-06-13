@@ -1,5 +1,7 @@
 namespace CSharpExampleArtGallery;
 
+// TODO 11: Delete this file once controller is using DbContext
+
 public class ArtworksData
 {
     private static Dictionary<int, Artwork> Artworks = [];
