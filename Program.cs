@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Use string saved in secrets.json on local machine instead
 var connectionString = builder.Configuration["connectionStringArtGallery2024"];
-var serverVersion = new MySqlServerVersion(new Version(8, 0, 31));
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 34));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
