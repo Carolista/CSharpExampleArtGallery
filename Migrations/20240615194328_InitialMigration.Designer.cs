@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharpExampleArtGallery.Migrations
 {
     [DbContext(typeof(ArtworkDbContext))]
-    [Migration("20240611021147_InitialMigration")]
+    [Migration("20240615194328_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
