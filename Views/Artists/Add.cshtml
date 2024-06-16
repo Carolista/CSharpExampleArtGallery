@@ -1,0 +1,35 @@
+@using CSharpExampleArtGallery
+@model AddArtistViewModel
+
+@{
+    ViewData["Title"] = "ADD ARTIST";
+    ViewData["Controller"] = "Artists";
+    ViewBag.Links = new Dictionary<string, string> 
+        {
+            { "Index", "View All Artists"},
+            { "Delete", "Delete Artists" }
+        };
+}
+
+<div class="main">
+    <h3>Add Artist</h3>
+
+    <form asp-controller="Artists" asp-action="Add" method="POST">
+        <div class="form-item col-4">
+            <label asp-for="FirstName">First Name</label>
+            <input asp-for="FirstName" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-item col-4">
+            <label asp-for="LastName">Last Name</label>
+            <input asp-for="LastName" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="form-item col-4">
+            <label asp-for="Location">Location</label>
+            <input asp-for="Location" />
+            <span asp-validation-for="Location" class="text-danger"></span>
+        </div>
+        <button type="submit">Add Artist</button>
+    </form>
+</div>
