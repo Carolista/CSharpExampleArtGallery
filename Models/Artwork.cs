@@ -1,12 +1,11 @@
 ﻿namespace CSharpExampleArtGallery;
 
-// TODO 7: Replace Style property with Category property and update constructor
 public class Artwork
 {
     public int Id { get; set; }
     public string? Title { get; set; }
     public Artist? Artist { get; set; }
-    public Style Style { get; set; }
+    public Category? Category { get; set; }
 
     public string? YearCreated { get; set; }
     public string? Media { get; set; }
@@ -14,12 +13,12 @@ public class Artwork
 
     public Artwork() { }
 
-    public Artwork(string title, Artist artist, Style style, string yearCreated, string media, string imageId)
+    public Artwork(string title, Artist artist, Category category, string yearCreated, string media, string imageId)
         : this()
     {
         Title = title;
         Artist = artist;
-        Style = style;
+        Category = category;
         YearCreated = yearCreated;
         Media = media;
         ImageId = imageId;

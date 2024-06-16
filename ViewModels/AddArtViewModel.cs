@@ -7,12 +7,10 @@ public class AddArtViewModel
 {
     [Required(ErrorMessage = "Title is required.")]
     public string? Title { get; set; }
-    
+
     // Form select will return integer value
     public int ArtistId { get; set; }
-
-    // TODO 8: Replace with int CategoryId since select will return option value
-    public Style Style { get; set; }
+    public int CategoryId { get; set; }
 
     [Required(ErrorMessage = "Year created is required.")]
     public string? YearCreated { get; set; }
@@ -25,13 +23,11 @@ public class AddArtViewModel
 
     public List<SelectListItem> Artists { get; set; } = [];
 
-    // TODO 8: Replace Styles with Categories
-    public List<SelectListItem> Styles { get; set; } = [];
+    public List<SelectListItem> Categories { get; set; } = [];
 
     public AddArtViewModel() { }
 
-    // TODO 8: Modify 2nd constructor below to accept list of categories
-    public AddArtViewModel(List<Artist> artistList)
+    public AddArtViewModel(List<Artist> artistList, List<Category> categoryList)
     {
         foreach (Artist artist in artistList)
         {
@@ -40,16 +36,11 @@ public class AddArtViewModel
             Artists.Add(new SelectListItem(artistDisplayName, artistInputValue));
         }
 
-        // TODO 8: Replace code below with loop for categories (similar to artists)
-        List<Style> styleList = ((Style[])Enum.GetValues(typeof(Style)))
-            .OrderBy(s => s.ToString())
-            .ToList();
-
-        foreach (Style style in styleList)
+        foreach (Category category in categoryList)
         {
-            string styleDisplayName = Utils.GetDisplayName(style.ToString());
-            string styleInputValue = ((int)style).ToString();
-            Styles.Add(new SelectListItem(styleDisplayName, styleInputValue));
+            string categoryDisplayName = category.Title ?? "";
+            string categoryInputValue = category.Id.ToString();
+            Categories.Add(new SelectListItem(categoryDisplayName, categoryInputValue));
         }
     }
 }

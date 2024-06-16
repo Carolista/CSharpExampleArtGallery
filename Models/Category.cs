@@ -6,7 +6,7 @@ public class Category
     public int Id { get; set; }
     public string? Title { get; set; }
 
-    // TODO 7: Add list of artworks and initialize to empty list
+    public List<Artwork> Artworks { get; set; } = [];
 
     public Category() { }
     

@@ -24,10 +24,9 @@
             <label asp-for="ArtistId">Artist</label>
             <select asp-for="ArtistId" asp-items="Model.Artists"></select>
         </div>
-        @* TODO 10: Replace input with select of category options and remove span *@
         <div class="form-item col-4">
-            <label asp-for="Style">Style</label>
-            <select asp-for="Style" asp-items="Model.Styles"></select>
+            <label asp-for="CategoryId">Category</label>
+            <select asp-for="CategoryId" asp-items="Model.Categories"></select>
         </div>
         <div class="form-item col-4">
             <label asp-for="YearCreated">Year Created</label>
