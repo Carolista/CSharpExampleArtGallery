@@ -51,7 +51,7 @@ public class ArtworksController : Controller
         return View("Delete", artworks);
     }
 
-    // Endpoint: POST http://localhost:5xxx/artworks/delete?artworkIds=1&artworkIds=2 (etc)
+    // Endpoint: POST http://localhost:5xxx/artworks/delete
     [HttpPost("delete")]
     public IActionResult ProcessDeleteArtworksForm(int[] artworkIds)
     {

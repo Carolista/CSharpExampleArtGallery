@@ -26,11 +26,12 @@ public class AddArtViewModel
         List<Style> styleList = ((Style[])Enum.GetValues(typeof(Style)))
             .OrderBy(s => s.ToString())
             .ToList();
+
         foreach (Style style in styleList)
         {
-            Styles.Add(
-                new SelectListItem(Utils.GetDisplayName(style.ToString()), ((int)style).ToString())
-            );
+            string styleDisplayName = Utils.GetDisplayName(style.ToString());
+            string styleInputValue = ((int)style).ToString();
+            Styles.Add(new SelectListItem(styleDisplayName, styleInputValue));
         }
     }
 }
