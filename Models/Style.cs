@@ -1,5 +1,7 @@
 ﻿namespace CSharpExampleArtGallery;
 
+// TODO 11: Delete once Category is in use with Artwork instead
+
 public enum Style
 {
     AbstractPhotography = 1,

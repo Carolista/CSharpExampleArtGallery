@@ -17,7 +17,8 @@ public class ArtistsController : Controller
     [HttpGet("")]
     public IActionResult RenderArtistsPage()
     {
-        List<Artist> artists = context.Artists.OrderBy(a => a.FirstName).ToList();
+        // TODO 13: Include artworks list and order by first name
+        List<Artist> artists = context.Artists.ToList();
         return View("Index", artists);
     }
 
@@ -52,7 +53,8 @@ public class ArtistsController : Controller
     [HttpGet("delete")]
     public IActionResult RenderDeleteArtistsForm()
     {
-        List<Artist> artists = context.Artists.OrderBy(a => a.LastName).ToList();
+        // TODO 1: Order by last name
+        List<Artist> artists = context.Artists.ToList();
         return View("Delete", artists);
     }
 

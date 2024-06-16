@@ -16,14 +16,21 @@ public class ArtworksController : Controller
     [HttpGet]
     public IActionResult RenderArtworksPage()
     {
+        // TODO 4: Modify to include artist object and order by artwork title
+        // TODO 9: Modify to include category object
         List<Artwork> artworks = context.Artworks.ToList();
         return View("Index", artworks);
+
+        // TODO 13: Accept optional artistId as query parameter to display only artworks by that artist
+        // TODO 13: Pass in different ViewData["Title"] values depending on artistId being present
     }
 
     // Endpoint: GET http://localhost:5xxx/artworks/add
     [HttpGet("add")]
     public IActionResult RenderAddArtworkForm()
     {
+        // TODO 4: Pass artists into constructor (order by last name)
+        // TODO 9: Pass categories into constructor (order by title)
         AddArtViewModel addArtViewModel = new();
         return View("Add", addArtViewModel);
     }
@@ -34,6 +41,8 @@ public class ArtworksController : Controller
     {
         if (ModelState.IsValid)
         {
+            // TODO 4: Look up artist and assign to artist below
+            // TODO 9: Look up category and assign to artist below
             Artwork artwork = new()
             {
                 Title = addArtViewModel.Title,
@@ -43,8 +52,8 @@ public class ArtworksController : Controller
                 Media = addArtViewModel.Media,
                 ImageId = addArtViewModel.ImageId
             };
-            context.Artworks.Add(artwork); // save to list in DbSet object
-            context.SaveChanges(); // push change to database
+            context.Artworks.Add(artwork);
+            context.SaveChanges();
             return Redirect("/artworks");
         }
         return View("Add", addArtViewModel);
@@ -54,6 +63,8 @@ public class ArtworksController : Controller
     [HttpGet("delete")]
     public IActionResult RenderDeleteArtworksForm()
     {
+        // TODO 4: Include artists and order by artwork title
+        // TODO 9: Include categories
         List<Artwork> artworks = context.Artworks.ToList();
         return View("Delete", artworks);
     }
@@ -67,10 +78,10 @@ public class ArtworksController : Controller
             Artwork? theArtwork = context.Artworks.Find(id);
             if (theArtwork != null)
             {
-                context.Artworks.Remove(theArtwork); // remove one from list
+                context.Artworks.Remove(theArtwork);
             }
         }
-        context.SaveChanges(); // after all have been removed from the list
+        context.SaveChanges();
         return Redirect("/artworks");
     }
 }
