@@ -20,12 +20,9 @@
             <input asp-for="Title" />
             <span asp-validation-for="Title" class="text-danger"></span>
         </div>
-        @* TODO 5: Replace input with select of artist options and remove span *@
-        @* Be sure to use ArtistId instead of Artist to match ViewModel *@
         <div class="form-item col-4">
-            <label asp-for="Artist">Artist</label>
-            <input asp-for="Artist" />
-            <span asp-validation-for="Artist" class="text-danger"></span>
+            <label asp-for="ArtistId">Artist</label>
+            <select asp-for="ArtistId" asp-items="Model.Artists"></select>
         </div>
         @* TODO 10: Replace input with select of category options and remove span *@
         <div class="form-item col-4">

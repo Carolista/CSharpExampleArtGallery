@@ -15,8 +15,8 @@ public class AddArtViewModel
         ErrorMessage = "Artist's name must be 2-30 characters long."
     )]
     
-    // TODO 3: Replace with int ArtistId since select will return option value
-    public string? Artist { get; set; }
+    // Form select will return integer value
+    public int ArtistId { get; set; }
 
     // TODO 8: Replace with int CategoryId since select will return option value
     public Style Style { get; set; }
@@ -30,16 +30,22 @@ public class AddArtViewModel
     [Required(ErrorMessage = "Image ID is required.")]
     public string? ImageId { get; set; }
 
-    // TODO 3: Add List of SelectListItem objects for Artists and initialize to empty list
+    public List<SelectListItem> Artists { get; set; } = [];
+
     // TODO 8: Replace Styles with Categories
     public List<SelectListItem> Styles { get; set; } = [];
 
-    // TODO 3: Create no-arg constructor and modify constructor below to accept list of artists
+    public AddArtViewModel() { }
 
     // TODO 8: Modify 2nd constructor below to accept list of categories
-    public AddArtViewModel()
+    public AddArtViewModel(List<Artist> artistList)
     {
-        // TODO 3: Loop over artists to create SelectListItem objects and fill list
+        foreach (Artist artist in artistList)
+        {
+            string artistDisplayName = artist.LastName = ", " + artist.FirstName;
+            string artistInputValue = artist.Id.ToString();
+            Artists.Add(new SelectListItem(artistDisplayName, artistInputValue));
+        }
 
         // TODO 8: Replace code below with loop for categories (similar to artists)
         List<Style> styleList = ((Style[])Enum.GetValues(typeof(Style)))

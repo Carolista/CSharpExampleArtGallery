@@ -1,12 +1,12 @@
 ﻿namespace CSharpExampleArtGallery;
 
-// TODO 2: Modify Artist property to be of Artist type and update constructor
 // TODO 7: Replace Style property with Category property and update constructor
 public class Artwork
 {
     public int Id { get; set; }
     public string? Title { get; set; }
-    public string? Artist { get; set; }
+    public Artist? Artist { get; set; }
+    // public int ArtistId { get; set; } // EF Core will recognize as foreign key
     public Style Style { get; set; }
 
     public string? YearCreated { get; set; }
@@ -15,7 +15,7 @@ public class Artwork
 
     public Artwork() { }
 
-    public Artwork(string title, string artist, Style style, string yearCreated, string media, string imageId)
+    public Artwork(string title, Artist artist, Style style, string yearCreated, string media, string imageId)
         : this()
     {
         Title = title;

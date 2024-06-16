@@ -8,7 +8,7 @@ public class Artist
     public string? LastName { get; set; }
     public string? Location { get; set; }
 
-    // TODO 2: Add list of artworks and initialize to empty list
+    public List<Artwork> Artworks { get; set; } = [];
 
     public Artist() { }
     
