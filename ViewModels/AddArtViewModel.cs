@@ -18,6 +18,7 @@ public class AddArtViewModel
 
     public Style Style { get; set; }
 
+    // There is a better way to do this — see chapter 17 solution!
     public List<SelectListItem> Styles { get; set; } =
         [
             new SelectListItem(Style.ArtNouveau.ToString(), ((int)Style.ArtNouveau).ToString()),
