@@ -11,6 +11,3 @@ public class ArtworkDbContext : DbContext
     public ArtworkDbContext(DbContextOptions<ArtworkDbContext> options)
         : base(options) { }
 }
-
-// TODO 12: Create new migration to relate Categories and Artworks
-// Update database

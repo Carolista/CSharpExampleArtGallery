@@ -17,8 +17,10 @@ public class ArtistsController : Controller
     [HttpGet("")]
     public IActionResult RenderArtistsPage()
     {
-        // TODO 13: Include artworks list and order by first name
-        List<Artist> artists = context.Artists.ToList();
+        List<Artist> artists = context
+            .Artists.Include(a => a.Artworks)
+            .OrderBy(a => a.FirstName)
+            .ToList();
         return View("Index", artists);
     }
 
@@ -36,12 +38,13 @@ public class ArtistsController : Controller
     {
         if (ModelState.IsValid)
         {
-            Artist artist = new()
-            {
-                FirstName = addArtistViewModel.FirstName,
-                LastName = addArtistViewModel.LastName,
-                Location = addArtistViewModel.Location,
-            };
+            Artist artist =
+                new()
+                {
+                    FirstName = addArtistViewModel.FirstName,
+                    LastName = addArtistViewModel.LastName,
+                    Location = addArtistViewModel.Location,
+                };
             context.Artists.Add(artist);
             context.SaveChanges();
             return Redirect("/artists");
@@ -57,7 +60,7 @@ public class ArtistsController : Controller
         return View("Delete", artists);
     }
 
-    // Endpoint: POST http://localhost:5xxx/artists/delete 
+    // Endpoint: POST http://localhost:5xxx/artists/delete
     [HttpPost("delete")]
     public IActionResult ProcessDeleteArtistsForm(int[] artistIds)
     {
@@ -72,5 +75,4 @@ public class ArtistsController : Controller
         context.SaveChanges();
         return Redirect("/artists");
     }
-
 }

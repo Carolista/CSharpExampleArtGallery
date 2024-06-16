@@ -14,18 +14,30 @@ public class ArtworksController : Controller
     }
 
     // Endpoint: GET http://localhost:5xxx/artworks
+    // Endpoint: GET http://localhost:5xxx/artworks?artistId=1
     [HttpGet]
-    public IActionResult RenderArtworksPage()
+    public IActionResult RenderArtworksPage(int? artistId)
     {
-        List<Artwork> artworks = context
+        IOrderedQueryable<Artwork> allArtworks = context
             .Artworks.Include(a => a.Artist)
             .Include(a => a.Category)
-            .OrderBy(a => a.Title)
-            .ToList();
-        return View("Index", artworks);
+            .OrderBy(a => a.Title);
 
-        // TODO 13: Accept optional artistId as query parameter to display only artworks by that artist
-        // TODO 13: Pass in different ViewData["Title"] values depending on artistId being present
+        List<Artwork> artworks;
+
+        if (artistId != null)
+        {
+            Artist? theArtist = context.Artists.Find(artistId);
+            if (theArtist != null)
+            {
+                ViewData["Title"] = "ARTWORKS BY " + theArtist.ToString().ToUpper();
+                artworks = allArtworks.Where(a => a.ArtistId == artistId).ToList();
+                return View("Index", artworks);
+            }
+        }
+        ViewData["Title"] = "ALL ARTWORKS";
+        artworks = allArtworks.ToList();
+        return View("Index", artworks);
     }
 
     // Endpoint: GET http://localhost:5xxx/artworks/add
