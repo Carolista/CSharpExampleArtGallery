@@ -7,7 +7,7 @@ public class Artwork
     public Artist? Artist { get; set; }
     public int ArtistId { get; set; }
     public Category? Category { get; set; }
-
+    public int CategoryId { get; set; }
     public string? YearCreated { get; set; }
     public string? Media { get; set; }
     public string? ImageId { get; set; }
