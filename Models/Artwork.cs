@@ -1,13 +1,17 @@
 ﻿namespace CSharpExampleArtGallery;
 
-// TODO 2: Modify Artist property to be of Artist type and update constructor
-// TODO 7: Replace Style property with Category property and update constructor
 public class Artwork
 {
     public int Id { get; set; }
     public string? Title { get; set; }
+
+    // TODO 2: Modify Artist property to be of Artist type and update constructor
     public string? Artist { get; set; }
+    // TODO 2: Add ArtistId property
+
+    // TODO 7: Replace Style property with Category property and update constructor
     public Style Style { get; set; }
+    // TODO 7: Add CategoryId property
 
     public string? YearCreated { get; set; }
     public string? Media { get; set; }

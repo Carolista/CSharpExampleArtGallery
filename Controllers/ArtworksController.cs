@@ -64,7 +64,6 @@ public class ArtworksController : Controller
     public IActionResult RenderDeleteArtworksForm()
     {
         // TODO 4: Include artists and order by artwork title
-        // TODO 9: Include categories
         List<Artwork> artworks = context.Artworks.ToList();
         return View("Delete", artworks);
     }

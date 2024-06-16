@@ -8,14 +8,14 @@ public class AddArtViewModel
     [Required(ErrorMessage = "Title is required.")]
     public string? Title { get; set; }
 
+    // TODO 3: Replace with int ArtistId since select will return option value
+    // Remove validation rules
     [Required(ErrorMessage = "Artist is required.")]
     [StringLength(
         30,
         MinimumLength = 2,
         ErrorMessage = "Artist's name must be 2-30 characters long."
     )]
-    
-    // TODO 3: Replace with int ArtistId since select will return option value
     public string? Artist { get; set; }
 
     // TODO 8: Replace with int CategoryId since select will return option value
