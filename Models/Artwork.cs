@@ -6,7 +6,6 @@ public class Artwork
     public int Id { get; set; }
     public string? Title { get; set; }
     public Artist? Artist { get; set; }
-    // public int ArtistId { get; set; } // EF Core will recognize as foreign key
     public Style Style { get; set; }
 
     public string? YearCreated { get; set; }
