@@ -38,7 +38,10 @@ public class ArtworksController : Controller
             {
                 Title = addArtViewModel.Title,
                 Artist = addArtViewModel.Artist,
-                Style = addArtViewModel.Style
+                Style = addArtViewModel.Style,
+                YearCreated = addArtViewModel.YearCreated,
+                Media = addArtViewModel.Media,
+                ImageId = addArtViewModel.ImageId
             };
             context.Artworks.Add(artwork); // save to list in DbSet object
             context.SaveChanges(); // push change to database

@@ -16,16 +16,33 @@
 
     <form asp-controller="Artworks" asp-action="Add" method="POST">
         <div class="form-item col-4">
-            <input asp-for="Title" placeholder="Title" />
+            <label asp-for="Title">Title</label>
+            <input asp-for="Title" />
             <span asp-validation-for="Title" class="text-danger"></span>
         </div>
         <div class="form-item col-4">
-            <input asp-for="Artist" placeholder="Artist" />
+            <label asp-for="Artist">Artist</label>
+            <input asp-for="Artist" />
             <span asp-validation-for="Artist" class="text-danger"></span>
         </div>
         <div class="form-item col-4">
+            <label asp-for="Style">Style</label>
             <select asp-for="Style" asp-items="Model.Styles"></select>
-            <span asp-validation-for="Style" class="text-danger"></span>
+        </div>
+        <div class="form-item col-4">
+            <label asp-for="YearCreated">Year Created</label>
+            <input asp-for="YearCreated" />
+            <span asp-validation-for="YearCreated" class="text-danger"></span>
+        </div>
+        <div class="form-item col-4">
+            <label asp-for="Media">Media</label>
+            <input asp-for="Media" />
+            <span asp-validation-for="Media" class="text-danger"></span>
+        </div>
+        <div class="form-item col-4">
+            <label asp-for="ImageId">Image ID</label>
+            <input asp-for="ImageId" />
+            <span asp-validation-for="ImageId" class="text-danger"></span>
         </div>
         <button type="submit">Add to Collection</button>
     </form>
