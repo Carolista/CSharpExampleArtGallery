@@ -17,7 +17,7 @@ public class CategoriesController : Controller
     [HttpGet("")]
     public IActionResult RenderCategoriesPage()
     {
-        List<Category> categories = context.Categories.OrderBy(a => a.Title).ToList();
+        List<Category> categories = context.Categories.OrderBy(c => c.Title).ToList();
         return View("Index", categories);
     }
 
@@ -50,7 +50,7 @@ public class CategoriesController : Controller
     [HttpGet("delete")]
     public IActionResult RenderDeleteCategoriesForm()
     {
-        List<Category> categories = context.Categories.OrderBy(a => a.Title).ToList();
+        List<Category> categories = context.Categories.OrderBy(c => c.Title).ToList();
         return View("Delete", categories);
     }
 
