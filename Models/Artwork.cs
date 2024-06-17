@@ -8,6 +8,8 @@ public class Artwork
     public int ArtistId { get; set; }
     public Category? Category { get; set; }
     public int CategoryId { get; set; }
+
+    // TODO: Move to Details model and add Description, Height, Width, & Depth
     public string? YearCreated { get; set; }
     public string? Media { get; set; }
     public string? ImageId { get; set; }
