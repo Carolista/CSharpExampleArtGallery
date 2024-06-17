@@ -18,7 +18,7 @@ public class ArtworksController : Controller
     [HttpGet]
     public IActionResult RenderArtworksPage(int? artistId)
     {
-        IOrderedQueryable<Artwork> allArtworks = context
+        IQueryable<Artwork> allArtworks = context
             .Artworks.Include(a => a.Artist)
             .Include(a => a.Category)
             .OrderBy(a => a.Title);
