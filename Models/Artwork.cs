@@ -19,7 +19,9 @@ public class Artwork
     {
         Title = title;
         Artist = artist;
+        ArtistId = artist.Id;
         Category = category;
+        CategoryId = category.Id;
         YearCreated = yearCreated;
         Media = media;
         ImageId = imageId;
