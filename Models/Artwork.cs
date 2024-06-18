@@ -1,4 +1,6 @@
-﻿namespace CSharpExampleArtGallery;
+﻿using System.Text;
+
+namespace CSharpExampleArtGallery;
 
 public class Artwork
 {
@@ -6,22 +8,19 @@ public class Artwork
     public string? Title { get; set; }
     public Artist? Artist { get; set; }
     public int ArtistId { get; set; }
-    public Category? Category { get; set; }
-    public int CategoryId { get; set; }
+    public ICollection<Category> Categories { get; set; } = new List<Category>();
     public Details? Details { get; set; }
     public int DetailsId { get; set; }
     public string? ImageId { get; set; }
 
     public Artwork() { }
 
-    public Artwork(string title, Artist artist, Category category, Details details, string imageId)
+    public Artwork(string title, Artist artist, Details details, string imageId)
         : this()
     {
         Title = title;
         Artist = artist;
         ArtistId = artist.Id;
-        Category = category;
-        CategoryId = category.Id;
         Details = details;
         DetailsId = details.Id;
         ImageId = imageId;
@@ -44,6 +43,6 @@ public class Artwork
 
     public string GetFormattedCategories()
     {
-        return ""; // TODO: finish me
+        return string.Join(", ", Categories);
     }
 }

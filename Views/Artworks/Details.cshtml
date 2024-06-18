@@ -31,8 +31,8 @@
                 <p>@Model.Details?.Description</p>
             </div>
             <div class="col">
-                <h5>Category</h5>
-                <p>@Model.Category</p>
+                <h5>Categories</h5>
+                <p>@Model.GetFormattedCategories()</p>
 
                 <h5>Media</h5>
                 <p>@Model.Details?.Media</p>

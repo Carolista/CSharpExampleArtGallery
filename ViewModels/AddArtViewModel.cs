@@ -8,9 +8,9 @@ public class AddArtViewModel
     [Required(ErrorMessage = "Title is required.")]
     public string? Title { get; set; }
 
-    // Form select will return integer value
     public int ArtistId { get; set; }
-    public int CategoryId { get; set; }
+
+    // public int[]? CategoryIds { get; set; }
 
     [Required(ErrorMessage = "Year created is required.")]
     public string? YearCreated { get; set; }
@@ -35,7 +35,7 @@ public class AddArtViewModel
 
     public List<SelectListItem> Artists { get; set; } = [];
 
-    public List<SelectListItem> Categories { get; set; } = [];
+    public List<Category> Categories { get; set; } = [];
 
     public AddArtViewModel() { }
 
@@ -48,11 +48,6 @@ public class AddArtViewModel
             Artists.Add(new SelectListItem(artistDisplayName, artistInputValue));
         }
 
-        foreach (Category category in categoryList)
-        {
-            string categoryDisplayName = category.Title ?? "";
-            string categoryInputValue = category.Id.ToString();
-            Categories.Add(new SelectListItem(categoryDisplayName, categoryInputValue));
-        }
+        Categories = [.. categoryList];
     }
 }

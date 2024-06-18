@@ -21,7 +21,7 @@
                     <th>Id</th>
                     <th>Title</th>
                     <th>Artist</th>
-                    <th>Category</th>
+                    <th>Categories</th>
                     <th>Image</th>
                 </tr>
             </thead>
@@ -31,7 +31,7 @@
                     <td>@artwork.Id</td>
                     <td>@artwork.Title</td>
                     <td>@artwork.Artist</td>
-                    <td>@artwork.Category</td>
+                    <td>@artwork.GetFormattedCategories()</td>
                     <td>
                         <a href="https://drive.google.com/uc?export=view&id=@artwork.ImageId" target="_blank">
                             <img src="https://drive.google.com/thumbnail?id=@artwork.ImageId&size=50w" width="50px" />

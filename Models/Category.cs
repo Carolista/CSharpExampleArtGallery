@@ -6,7 +6,7 @@ public class Category
     public int Id { get; set; }
     public string? Title { get; set; }
 
-    public List<Artwork> Artworks { get; set; } = [];
+    public ICollection<Artwork> Artworks { get; set; } = new List<Artwork>();
 
     public Category() { }
     

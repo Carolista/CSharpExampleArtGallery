@@ -11,4 +11,12 @@ public class ArtworkDbContext : DbContext
 
     public ArtworkDbContext(DbContextOptions<ArtworkDbContext> options)
         : base(options) { }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Artwork>()
+            .HasMany(e => e.Categories)
+            .WithMany(e => e.Artworks)
+            .UsingEntity(j => j.ToTable("ArtworksCategories"));
+    }
 }

@@ -20,7 +20,7 @@ public class ArtworksController : Controller
     {
         IQueryable<Artwork> allArtworks = context
             .Artworks.Include(a => a.Artist)
-            .Include(a => a.Category)
+            .Include(a => a.Categories)
             .OrderBy(a => a.Title);
 
         List<Artwork> artworks;
@@ -49,14 +49,14 @@ public class ArtworksController : Controller
         {
             Artwork theArtwork = context
                 .Artworks.Include(a => a.Artist)
-                .Include(a => a.Category)
+                .Include(a => a.Categories)
                 .Include(a => a.Details)
                 .Single(a => a.Id == artworkId);
             return View("Details", theArtwork);
         }
         return View("Index");
     }
- 
+
     // Endpoint: GET http://localhost:5xxx/artworks/add
     [HttpGet("add")]
     public IActionResult RenderAddArtworkForm()
@@ -69,12 +69,15 @@ public class ArtworksController : Controller
 
     // Endpoint: POST http://localhost:5xxx/artworks/add
     [HttpPost("add")]
-    public IActionResult ProcessAddArtworkForm(AddArtViewModel addArtViewModel)
+    public IActionResult ProcessAddArtworkForm(AddArtViewModel addArtViewModel, int[] categoryIds)
     {
         if (ModelState.IsValid)
         {
             Artist? theArtist = context.Artists.Find(addArtViewModel.ArtistId);
-            Category? theCategory = context.Categories.Find(addArtViewModel.CategoryId);
+            List<int> categoryIdList = [.. categoryIds];
+            List<Category> selectedCategories = context
+                .Categories.Where(c => categoryIdList.Contains(c.Id))
+                .ToList();
             Details theDetails =
                 new()
                 {
@@ -90,7 +93,7 @@ public class ArtworksController : Controller
                 {
                     Title = addArtViewModel.Title,
                     Artist = theArtist,
-                    Category = theCategory,
+                    Categories = selectedCategories,
                     Details = theDetails,
                     ImageId = addArtViewModel.ImageId
                 };

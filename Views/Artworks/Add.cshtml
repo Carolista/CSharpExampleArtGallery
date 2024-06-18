@@ -25,8 +25,14 @@
             <select asp-for="ArtistId" asp-items="Model.Artists"></select>
         </div>
         <div class="form-item col-4">
-            <label asp-for="CategoryId">Category</label>
-            <select asp-for="CategoryId" asp-items="Model.Categories"></select>
+            <label>Categories</label>
+            @foreach (Category category in Model.Categories)
+            {
+                <label>
+                    <input type="checkbox" name="categoryIds" value="@category.Id" />
+                    <span>@category.Title</span>
+                </label>
+            }
         </div>
         <div class="form-item col-4">
             <label asp-for="YearCreated">Year Created</label>
