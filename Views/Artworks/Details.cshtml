@@ -28,17 +28,17 @@
                 <p>@Model.Id</p>
 
                 <h5>Description</h5>
-                <p>@Model.Details.Description</p>
+                <p>@Model.Details?.Description</p>
             </div>
             <div class="col">
                 <h5>Category</h5>
                 <p>@Model.Category</p>
 
                 <h5>Media</h5>
-                <p>@Model.Details.Media</p>
+                <p>@Model.Details?.Media</p>
 
                 <h5>Dimensions</h5>
-                <p>@Model.Details.GetDimensions()</p>
+                <p>@Model.Details?.GetDimensions()</p>
             </div>
         </div>
     </div>

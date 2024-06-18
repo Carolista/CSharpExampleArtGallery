@@ -58,16 +58,32 @@ public class CategoriesController : Controller
     [HttpPost("delete")]
     public IActionResult ProcessDeleteCategoriesForm(int[] categoryIds)
     {
+        IQueryable<Category> allCategories = context.Categories.Include(c => c.Artworks);
+        List<int> errorIds = [];
+
         foreach (int id in categoryIds)
         {
-            Category? theCategory = context.Categories.Include(c => c.Artworks).Single(c => c.Id == id);
-            if (theCategory != null && theCategory.Artworks.Count == 0)
+            Category? theCategory = allCategories.Single(c => c.Id == id);
+            if (theCategory != null)
             {
-                context.Categories.Remove(theCategory);
+                if (theCategory.Artworks.Count == 0)
+                {
+                    context.Categories.Remove(theCategory);
+                }
+                else
+                {
+                    errorIds.Add(id);
+                }       
             }
         }
         context.SaveChanges();
-        return Redirect("/categories");
+        if (errorIds.Count > 0) 
+        {
+            ViewBag.ErrorIds = errorIds;
+            string errorText = errorIds.Count == 1 ? "1 category was" : (errorIds.Count + " categories were");
+            ViewData["ErrorMessage"] = "WARNING: " + errorText + " unable to be deleted due to existing related artwork records, as indicated below.";
+        }
+        return View("Index", allCategories.ToList());
     }
 
 }

@@ -14,6 +14,11 @@
 <div class="main">
     <h2>CATEGORIES</h2>
 
+    @if(ViewData["ErrorMessage"] != null)
+    {
+        <p class="text-danger fw-bold">@ViewData["ErrorMessage"]</p>
+    }
+
     @if(Model?.Count > 0)
     {
         <table class="table table-striped">
@@ -25,7 +30,9 @@
             </thead>
             @foreach(Category category in Model)
             {
-                <tr>
+                string errorClass = ViewBag.ErrorIds != null && ViewBag.ErrorIds.Contains(category.Id) ? "text-danger fw-bold" : ""; 
+
+                <tr class="@errorClass">
                     <td>@category.Id</td>
                     <td>@category.Title</td>
                 </tr>

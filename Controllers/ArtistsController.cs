@@ -64,15 +64,32 @@ public class ArtistsController : Controller
     [HttpPost("delete")]
     public IActionResult ProcessDeleteArtistsForm(int[] artistIds)
     {
+        IQueryable<Artist> allArtists = context.Artists.Include(a => a.Artworks);
+
+        List<int> errorIds = [];
+
         foreach (int id in artistIds)
         {
-            Artist? theArtist = context.Artists.Include(a => a.Artworks).Single(a => a.Id == id);
-            if (theArtist != null && theArtist.Artworks.Count == 0)
+            Artist? theArtist = allArtists.Single(a => a.Id == id);
+            if (theArtist != null)
             {
-                context.Artists.Remove(theArtist);
+                if (theArtist.Artworks.Count == 0)
+                {
+                    context.Artists.Remove(theArtist);
+                } 
+                else
+                {
+                    errorIds.Add(id);
+                }
             }
         }
         context.SaveChanges();
-        return Redirect("/artists");
+        if (errorIds.Count > 0) 
+        {
+            ViewBag.ErrorIds = errorIds;
+            string errorText = errorIds.Count == 1 ? "1 artist was" : (errorIds.Count + " artists were");
+            ViewData["ErrorMessage"] = "WARNING: " + errorText + " unable to be deleted due to existing related artwork records, as indicated below.";
+        }
+        return View("Index", allArtists.ToList());
     }
 }
