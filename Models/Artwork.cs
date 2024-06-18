@@ -41,4 +41,9 @@ public class Artwork
     {
         return HashCode.Combine(Id);
     }
+
+    public string GetFormattedCategories()
+    {
+        return ""; // TODO: finish me
+    }
 }

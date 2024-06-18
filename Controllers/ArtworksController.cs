@@ -40,6 +40,23 @@ public class ArtworksController : Controller
         return View("Index", artworks);
     }
 
+    // Endpoint: GET http://localhost:5xxx/artworks/details/1
+    [HttpGet("details/{artworkId}")]
+    public IActionResult RenderArtworkDetailsPage(int artworkId)
+    {
+        Artwork? requestedArtwork = context.Artworks.Find(artworkId);
+        if (requestedArtwork != null)
+        {
+            Artwork theArtwork = context
+                .Artworks.Include(a => a.Artist)
+                .Include(a => a.Category)
+                .Include(a => a.Details)
+                .Single(a => a.Id == artworkId);
+            return View("Details", theArtwork);
+        }
+        return View("Index");
+    }
+ 
     // Endpoint: GET http://localhost:5xxx/artworks/add
     [HttpGet("add")]
     public IActionResult RenderAddArtworkForm()
@@ -58,15 +75,16 @@ public class ArtworksController : Controller
         {
             Artist? theArtist = context.Artists.Find(addArtViewModel.ArtistId);
             Category? theCategory = context.Categories.Find(addArtViewModel.CategoryId);
-            Details theDetails = new()
-            {
-                YearCreated = addArtViewModel.YearCreated,
-                Media = addArtViewModel.Media,
-                Description = addArtViewModel.Description,
-                Height = addArtViewModel.Height,
-                Width = addArtViewModel.Width,
-                Depth = addArtViewModel.Depth
-            };
+            Details theDetails =
+                new()
+                {
+                    YearCreated = addArtViewModel.YearCreated,
+                    Media = addArtViewModel.Media,
+                    Description = addArtViewModel.Description,
+                    Height = addArtViewModel.Height,
+                    Width = addArtViewModel.Width,
+                    Depth = addArtViewModel.Depth
+                };
             Artwork artwork =
                 new()
                 {
@@ -100,9 +118,14 @@ public class ArtworksController : Controller
     {
         foreach (int id in artworkIds)
         {
-            Artwork? theArtwork = context.Artworks.Find(id);
+            Artwork? theArtwork = context.Artworks.Include(a => a.Details).Single(a => a.Id == id);
             if (theArtwork != null)
             {
+                Details? theDetails = context.Details.Find(theArtwork.DetailsId);
+                if (theDetails != null)
+                {
+                    context.Details.Remove(theDetails);
+                }
                 context.Artworks.Remove(theArtwork);
             }
         }

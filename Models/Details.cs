@@ -33,4 +33,13 @@ public class Details
     {
         return HashCode.Combine(Id);
     }
+
+    public string GetDimensions()
+    {
+        string inches = '"'.ToString();
+        string heightFormatted = Height + inches + "H";
+        string widthFormatted = " x " + Width + inches + "W";
+        string depthFormatted = Depth > 0 ? " x " + Depth + inches + "D" : "";
+        return heightFormatted + widthFormatted + depthFormatted;
+    }
 }

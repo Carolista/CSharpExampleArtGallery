@@ -60,8 +60,8 @@ public class CategoriesController : Controller
     {
         foreach (int id in categoryIds)
         {
-            Category? theCategory = context.Categories.Find(id);
-            if (theCategory != null)
+            Category? theCategory = context.Categories.Include(c => c.Artworks).Single(c => c.Id == id);
+            if (theCategory != null && theCategory.Artworks.Count == 0)
             {
                 context.Categories.Remove(theCategory);
             }

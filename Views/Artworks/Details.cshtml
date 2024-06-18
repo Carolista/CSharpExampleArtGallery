@@ -1,0 +1,45 @@
+@using CSharpExampleArtGallery
+@model Artwork
+
+@{
+    ViewData["Controller"] = "Artworks";
+    ViewBag.Links = new Dictionary<string, string> 
+        {
+            { "Index", "View All Artworks"},
+            { "Add", "Add a New Artwork"},
+            { "Delete", "Delete Artworks" }
+        };
+}
+
+<div class="main">
+
+    <h2>ARTWORK DETAILS</h2>
+
+    <h4>@Model.Title by @Model.Artist</h4>
+
+    <div class="mt-4 mb-4">
+        <img class="mx-auto d-block" src="https://drive.google.com/thumbnail?sz=h500&id=@Model.ImageId" height="500px" />
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h5>ID</h5>
+                <p>@Model.Id</p>
+
+                <h5>Description</h5>
+                <p>@Model.Details.Description</p>
+            </div>
+            <div class="col">
+                <h5>Category</h5>
+                <p>@Model.Category</p>
+
+                <h5>Media</h5>
+                <p>@Model.Details.Media</p>
+
+                <h5>Dimensions</h5>
+                <p>@Model.Details.GetDimensions()</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -66,8 +66,8 @@ public class ArtistsController : Controller
     {
         foreach (int id in artistIds)
         {
-            Artist? theArtist = context.Artists.Find(id);
-            if (theArtist != null)
+            Artist? theArtist = context.Artists.Include(a => a.Artworks).Single(a => a.Id == id);
+            if (theArtist != null && theArtist.Artworks.Count == 0)
             {
                 context.Artists.Remove(theArtist);
             }
