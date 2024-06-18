@@ -18,6 +18,18 @@ public class AddArtViewModel
     [Required(ErrorMessage = "Media is required.")]
     public string? Media { get; set; }
 
+    [Required(ErrorMessage = "Description is required.")]
+    [StringLength(150, ErrorMessage = "Description cannot be longer than 150 characters.")]
+    public string? Description { get; set; }
+
+    [Required(ErrorMessage = "Height is required.")]
+    public double? Height { get; set; }
+
+    [Required(ErrorMessage = "Width is required.")]
+    public double? Width { get; set; }
+
+    public double? Depth { get; set; }
+
     [Required(ErrorMessage = "Image ID is required.")]
     public string? ImageId { get; set; }
 

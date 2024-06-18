@@ -58,14 +58,22 @@ public class ArtworksController : Controller
         {
             Artist? theArtist = context.Artists.Find(addArtViewModel.ArtistId);
             Category? theCategory = context.Categories.Find(addArtViewModel.CategoryId);
+            Details theDetails = new()
+            {
+                YearCreated = addArtViewModel.YearCreated,
+                Media = addArtViewModel.Media,
+                Description = addArtViewModel.Description,
+                Height = addArtViewModel.Height,
+                Width = addArtViewModel.Width,
+                Depth = addArtViewModel.Depth
+            };
             Artwork artwork =
                 new()
                 {
                     Title = addArtViewModel.Title,
                     Artist = theArtist,
                     Category = theCategory,
-                    YearCreated = addArtViewModel.YearCreated,
-                    Media = addArtViewModel.Media,
+                    Details = theDetails,
                     ImageId = addArtViewModel.ImageId
                 };
             context.Artworks.Add(artwork);

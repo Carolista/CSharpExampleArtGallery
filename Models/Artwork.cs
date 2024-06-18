@@ -8,13 +8,13 @@ public class Artwork
     public int ArtistId { get; set; }
     public Category? Category { get; set; }
     public int CategoryId { get; set; }
-    public string? YearCreated { get; set; }
-    public string? Media { get; set; }
+    public Details? Details { get; set; }
+    public int DetailsId { get; set; }
     public string? ImageId { get; set; }
 
     public Artwork() { }
 
-    public Artwork(string title, Artist artist, Category category, string yearCreated, string media, string imageId)
+    public Artwork(string title, Artist artist, Category category, Details details, string imageId)
         : this()
     {
         Title = title;
@@ -22,14 +22,14 @@ public class Artwork
         ArtistId = artist.Id;
         Category = category;
         CategoryId = category.Id;
-        YearCreated = yearCreated;
-        Media = media;
+        Details = details;
+        DetailsId = details.Id;
         ImageId = imageId;
     }
 
     public override string ToString()
     {
-        return Title + " (" + Artist + ", " + YearCreated + ")";
+        return Title + " (ID: " + Id + ")";
     }
 
     public override bool Equals(object? obj)
