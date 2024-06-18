@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace CSharpExampleArtGallery;
+﻿namespace CSharpExampleArtGallery;
 
 public class Artwork
 {

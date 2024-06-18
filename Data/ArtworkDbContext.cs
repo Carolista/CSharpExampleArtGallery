@@ -14,7 +14,8 @@ public class ArtworkDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Artwork>()
+        modelBuilder
+            .Entity<Artwork>()
             .HasMany(e => e.Categories)
             .WithMany(e => e.Artworks)
             .UsingEntity(j => j.ToTable("ArtworksCategories"));

@@ -1,5 +1,4 @@
-﻿
-namespace CSharpExampleArtGallery;
+﻿namespace CSharpExampleArtGallery;
 
 public class Artist
 {
@@ -11,7 +10,7 @@ public class Artist
     public List<Artwork> Artworks { get; set; } = [];
 
     public Artist() { }
-    
+
     public Artist(string firstName, string lastName, string location)
     {
         FirstName = firstName;
@@ -26,8 +25,7 @@ public class Artist
 
     public override bool Equals(object? obj)
     {
-        return obj is Artist artist &&
-               Id == artist.Id;
+        return obj is Artist artist && Id == artist.Id;
     }
 
     public override int GetHashCode()

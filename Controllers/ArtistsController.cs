@@ -76,7 +76,7 @@ public class ArtistsController : Controller
                 if (theArtist.Artworks.Count == 0)
                 {
                     context.Artists.Remove(theArtist);
-                } 
+                }
                 else
                 {
                     errorIds.Add(id);
@@ -84,11 +84,15 @@ public class ArtistsController : Controller
             }
         }
         context.SaveChanges();
-        if (errorIds.Count > 0) 
+        if (errorIds.Count > 0)
         {
             ViewBag.ErrorIds = errorIds;
-            string errorText = errorIds.Count == 1 ? "1 artist was" : (errorIds.Count + " artists were");
-            ViewData["ErrorMessage"] = "WARNING: " + errorText + " unable to be deleted due to existing related artwork records, as indicated below.";
+            string errorText =
+                errorIds.Count == 1 ? "1 artist was" : (errorIds.Count + " artists were");
+            ViewData["ErrorMessage"] =
+                "WARNING: "
+                + errorText
+                + " unable to be deleted due to existing related artwork records, as indicated below.";
         }
         return View("Index", allArtists.ToList());
     }

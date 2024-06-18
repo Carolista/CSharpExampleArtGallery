@@ -1,4 +1,3 @@
-
 namespace CSharpExampleArtGallery;
 
 public class Details
@@ -13,7 +12,14 @@ public class Details
 
     public Details() { }
 
-    public Details(string? yearCreated, string? media, string? description, double? height, double? width, double? depth)
+    public Details(
+        string? yearCreated,
+        string? media,
+        string? description,
+        double? height,
+        double? width,
+        double? depth
+    )
     {
         YearCreated = yearCreated;
         Media = media;
@@ -25,8 +31,7 @@ public class Details
 
     public override bool Equals(object? obj)
     {
-        return obj is Details details &&
-               Id == details.Id;
+        return obj is Details details && Id == details.Id;
     }
 
     public override int GetHashCode()

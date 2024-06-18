@@ -1,4 +1,3 @@
-
 namespace CSharpExampleArtGallery;
 
 public class Category
@@ -9,7 +8,7 @@ public class Category
     public ICollection<Artwork> Artworks { get; set; } = new List<Artwork>();
 
     public Category() { }
-    
+
     public Category(string title)
     {
         Title = title;
@@ -22,8 +21,7 @@ public class Category
 
     public override bool Equals(object? obj)
     {
-        return obj is Category Category &&
-               Id == Category.Id;
+        return obj is Category Category && Id == Category.Id;
     }
 
     public override int GetHashCode()

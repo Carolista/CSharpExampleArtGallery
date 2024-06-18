@@ -35,10 +35,7 @@ public class CategoriesController : Controller
     {
         if (ModelState.IsValid)
         {
-            Category category = new()
-            {
-                Title = addCategoryViewModel.Title
-            };
+            Category category = new() { Title = addCategoryViewModel.Title };
             context.Categories.Add(category);
             context.SaveChanges();
             return Redirect("/categories");
@@ -54,7 +51,7 @@ public class CategoriesController : Controller
         return View("Delete", categories);
     }
 
-    // Endpoint: POST http://localhost:5xxx/categories/delete 
+    // Endpoint: POST http://localhost:5xxx/categories/delete
     [HttpPost("delete")]
     public IActionResult ProcessDeleteCategoriesForm(int[] categoryIds)
     {
@@ -73,17 +70,20 @@ public class CategoriesController : Controller
                 else
                 {
                     errorIds.Add(id);
-                }       
+                }
             }
         }
         context.SaveChanges();
-        if (errorIds.Count > 0) 
+        if (errorIds.Count > 0)
         {
             ViewBag.ErrorIds = errorIds;
-            string errorText = errorIds.Count == 1 ? "1 category was" : (errorIds.Count + " categories were");
-            ViewData["ErrorMessage"] = "WARNING: " + errorText + " unable to be deleted due to existing related artwork records, as indicated below.";
+            string errorText =
+                errorIds.Count == 1 ? "1 category was" : (errorIds.Count + " categories were");
+            ViewData["ErrorMessage"] =
+                "WARNING: "
+                + errorText
+                + " unable to be deleted due to existing related artwork records, as indicated below.";
         }
         return View("Index", allCategories.ToList());
     }
-
 }
