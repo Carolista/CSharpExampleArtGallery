@@ -58,8 +58,8 @@ public class CategoriesController : Controller
     [HttpPost("delete")]
     public IActionResult ProcessDeleteCategoriesForm(int[] categoryIds)
     {
-        // TODO: Ensure category will not be deleted if related artworks still exist
-        // TODO: Add user feedback to point out which ones weren't deleted
+        // TODO 18: Ensure category will not be deleted if related artworks still exist
+        // TODO 18: Add user feedback to point out which ones weren't deleted
 
         foreach (int id in categoryIds)
         {

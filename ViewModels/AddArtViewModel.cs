@@ -11,7 +11,7 @@ public class AddArtViewModel
     // Form select will return integer value
     public int ArtistId { get; set; }
 
-    // TODO: Remove this once no longer needed
+    // TODO 12: Remove this once no longer needed
     public int CategoryId { get; set; }
 
     [Required(ErrorMessage = "Year created is required.")]
@@ -20,14 +20,14 @@ public class AddArtViewModel
     [Required(ErrorMessage = "Media is required.")]
     public string? Media { get; set; }
 
-    // TODO: Add Description, Height, Width, and Depth
+    // TODO 2: Add Description, Height, Width, and Depth with rules
 
     [Required(ErrorMessage = "Image ID is required.")]
     public string? ImageId { get; set; }
 
     public List<SelectListItem> Artists { get; set; } = [];
 
-    // TODO: Convert this to a list of Category objects
+    // TODO 12: Convert this to a list of Category objects
     public List<SelectListItem> Categories { get; set; } = [];
 
     public AddArtViewModel() { }
@@ -41,7 +41,7 @@ public class AddArtViewModel
             Artists.Add(new SelectListItem(artistDisplayName, artistInputValue));
         }
 
-        // TODO: Remove this and just pass the categoryList elements to Categories
+        // TODO 12: Remove this and just use the categoryList elements to fill Categories
         foreach (Category category in categoryList)
         {
             string categoryDisplayName = category.Title ?? "";

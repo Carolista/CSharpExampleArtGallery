@@ -14,7 +14,7 @@
 <div class="main">
     <h2>CATEGORIES</h2>
 
-    @* TODO: Add conditional custom error message if unable to delete categories *@
+    @* TODO 18: Add conditional custom error message if unable to delete categories *@
 
     @if(Model?.Count > 0)
     {
@@ -27,8 +27,8 @@
             </thead>
             @foreach(Category category in Model)
             {
-                @* TODO: create ternary to assign conditional classes to <tr> for errors *@
-                
+                @* TODO 18: Create ternary to assign conditional classes to <tr> for errors *@
+
                 <tr>
                     <td>@category.Id</td>
                     <td>@category.Title</td>

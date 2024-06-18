@@ -24,7 +24,7 @@
             <label asp-for="ArtistId">Artist</label>
             <select asp-for="ArtistId" asp-items="Model.Artists"></select>
         </div>
-        @* TODO: Replace with checkboxes to allow multiple categories to be selected *@
+        @* TODO 14: Replace with checkboxes to allow multiple categories to be selected *@
         <div class="form-item col-4">
             <label asp-for="CategoryId">Category</label>
             <select asp-for="CategoryId" asp-items="Model.Categories"></select>
@@ -39,7 +39,7 @@
             <input asp-for="Media" />
             <span asp-validation-for="Media" class="text-danger"></span>
         </div>
-        @* TODO: Add input fields for description, height, width, and depth *@
+        @* TODO 6: Add input fields for description, height, width, and depth *@
         <div class="form-item col-4">
             <label asp-for="ImageId">Image ID</label>
             <input asp-for="ImageId" />

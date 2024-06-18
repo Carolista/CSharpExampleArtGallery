@@ -64,9 +64,9 @@ public class ArtistsController : Controller
     [HttpPost("delete")]
     public IActionResult ProcessDeleteArtistsForm(int[] artistIds)
     {
-        // TODO: Ensure artist will not be deleted if related artworks still exist
-        // TODO: Add user feedback to point out which ones weren't deleted
-        
+        // TODO 17: Ensure artist will not be deleted if related artworks still exist
+        // TODO 17: Add user feedback to point out which ones weren't deleted
+
         foreach (int id in artistIds)
         {
             Artist? theArtist = context.Artists.Find(id);
