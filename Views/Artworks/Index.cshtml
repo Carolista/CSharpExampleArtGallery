@@ -33,7 +33,7 @@
                     <td>@artwork.Artist</td>
                     <td>@artwork.GetFormattedCategories()</td>
                     <td>
-                        <a href="https://drive.google.com/uc?export=view&id=@artwork.ImageId" target="_blank">
+                        <a asp-controller="Artworks" asp-action="Details" asp-route-id="@artwork.Id">
                             <img src="https://drive.google.com/thumbnail?id=@artwork.ImageId&size=50w" width="50px" />
                         </a>
                     </td>
