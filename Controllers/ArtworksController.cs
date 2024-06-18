@@ -108,10 +108,7 @@ public class ArtworksController : Controller
     [HttpGet("delete")]
     public IActionResult RenderDeleteArtworksForm()
     {
-        List<Artwork> artworks = context
-            .Artworks.Include(a => a.Artist)
-            .OrderBy(a => a.Title)
-            .ToList();
+        List<Artwork> artworks = context.Artworks.OrderBy(a => a.Title).ToList();
         return View("Delete", artworks);
     }
 

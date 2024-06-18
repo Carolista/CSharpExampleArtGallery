@@ -10,8 +10,6 @@ public class AddArtViewModel
 
     public int ArtistId { get; set; }
 
-    // public int[]? CategoryIds { get; set; }
-
     [Required(ErrorMessage = "Year created is required.")]
     public string? YearCreated { get; set; }
 
