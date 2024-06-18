@@ -6,7 +6,7 @@ public class Artwork
     public string? Title { get; set; }
     public Artist? Artist { get; set; }
     public int ArtistId { get; set; }
-    public ICollection<Category> Categories { get; set; } = new List<Category>();
+    public List<Category> Categories { get; set; } = [];
     public Details? Details { get; set; }
     public int DetailsId { get; set; }
     public string? ImageId { get; set; }
