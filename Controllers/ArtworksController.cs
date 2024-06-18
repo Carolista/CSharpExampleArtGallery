@@ -41,9 +41,9 @@ public class ArtworksController : Controller
     }
 
     // Endpoint: GET http://localhost:5xxx/artworks/details/1
-    // TODO 4: Add action method with path parameter to render artwork details page
+    // TODO 8: Add action method with path parameter to render artwork details page
 
-    // TODO 5: Create Artworks/Details template for View
+    // TODO 6: Create Artworks/Details template for View
     // TODO 15: Update Artwork/Details template to display multiple categories
 
     // Endpoint: GET http://localhost:5xxx/artworks/add
@@ -63,10 +63,10 @@ public class ArtworksController : Controller
         if (ModelState.IsValid)
         {
             Artist? theArtist = context.Artists.Find(addArtViewModel.ArtistId);
-            // TODO 13: Receive categoryIds as second parameter above and create List
+            // TODO 14: Receive categoryIds as second parameter above and create List
             // Replace theCategory with a list of selected Category objects matching ids
             Category? theCategory = context.Categories.Find(addArtViewModel.CategoryId);
-            // TODO 6: Create a new Details object using data from the form and add it to the Artwork object
+            // TODO 5: Create a new Details object using data from the form and add it to the Artwork object
             Artwork artwork =
                 new()
                 {
@@ -101,7 +101,7 @@ public class ArtworksController : Controller
             Artwork? theArtwork = context.Artworks.Find(id);
             if (theArtwork != null)
             {
-                // TODO 8: Look up details object and if it exists, delete it
+                // TODO 5: Look up details object and if it exists, delete it
                 context.Artworks.Remove(theArtwork);
             }
         }

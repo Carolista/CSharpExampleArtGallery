@@ -6,7 +6,7 @@ public class Artwork
     public string? Title { get; set; }
     public Artist? Artist { get; set; }
     public int ArtistId { get; set; }
-    // TODO 10: Replace Category and CategoryId with an ICollection<Category> initialized to empty List
+    // TODO 10: Replace Category and CategoryId with an List<Category> initialized to empty list
     public Category? Category { get; set; }
     public int CategoryId { get; set; }
     // TODO 1: Add Details and DetailsId
@@ -46,5 +46,5 @@ public class Artwork
         return HashCode.Combine(Id);
     }
 
-    // TODO 10: Add method to get formatted Categories as a string
+    // TODO 11: Add method to get formatted Categories as a string
 }
