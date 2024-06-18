@@ -6,6 +6,7 @@ public class Category
     public int Id { get; set; }
     public string? Title { get; set; }
 
+    // TODO: Modify this to be an ICollection<Artwork>
     public List<Artwork> Artworks { get; set; } = [];
 
     public Category() { }

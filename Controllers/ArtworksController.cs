@@ -40,6 +40,12 @@ public class ArtworksController : Controller
         return View("Index", artworks);
     }
 
+    // Endpoint: GET http://localhost:5xxx/artworks/details/1
+    // TODO: Add action method with path parameter to render artwork details page
+
+    // TODO: Create Artworks/Details template for View
+    // TODO: Update Artwork/Details template to display multiple categories
+
     // Endpoint: GET http://localhost:5xxx/artworks/add
     [HttpGet("add")]
     public IActionResult RenderAddArtworkForm()
@@ -57,7 +63,10 @@ public class ArtworksController : Controller
         if (ModelState.IsValid)
         {
             Artist? theArtist = context.Artists.Find(addArtViewModel.ArtistId);
+            // TODO: Receive categoryIds as second parameter above and create List
+            // Replace theCategory with a list of selected Category objects matching ids
             Category? theCategory = context.Categories.Find(addArtViewModel.CategoryId);
+            // TODO: Create a new Details object using data from the form and add it to the Artwork object
             Artwork artwork =
                 new()
                 {
@@ -79,10 +88,7 @@ public class ArtworksController : Controller
     [HttpGet("delete")]
     public IActionResult RenderDeleteArtworksForm()
     {
-        List<Artwork> artworks = context
-            .Artworks.Include(a => a.Artist)
-            .OrderBy(a => a.Title)
-            .ToList();
+        List<Artwork> artworks = context.Artworks.OrderBy(a => a.Title).ToList();
         return View("Delete", artworks);
     }
 
@@ -95,6 +101,7 @@ public class ArtworksController : Controller
             Artwork? theArtwork = context.Artworks.Find(id);
             if (theArtwork != null)
             {
+                // TODO: Look up details object and if it exists, delete it
                 context.Artworks.Remove(theArtwork);
             }
         }

@@ -21,7 +21,9 @@
                     <th>Id</th>
                     <th>Title</th>
                     <th>Artist</th>
+                    @* TODO: Change to list multiple Categories *@
                     <th>Category</th>
+                    @* TODO: Remove Year Created and Media columns *@
                     <th>Year Created</th>
                     <th>Media</th>
                     <th>Image</th>
@@ -37,6 +39,7 @@
                     <td>@artwork.YearCreated</td>
                     <td>@artwork.Media</td>
                     <td>
+                        @* TODO: Update link to go to details/{id} page *@
                         <a href="https://drive.google.com/uc?export=view&id=@artwork.ImageId" target="_blank">
                             <img src="https://drive.google.com/thumbnail?id=@artwork.ImageId&size=50w" width="50px" />
                         </a>

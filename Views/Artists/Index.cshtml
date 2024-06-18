@@ -14,6 +14,8 @@
 <div class="main">
     <h2>ARTISTS</h2>
 
+    @* TODO: Add conditional custom error message if unable to delete artists *@
+
     @if(Model?.Count > 0)
     {
         <table class="table table-striped">
@@ -29,6 +31,8 @@
             @foreach(Artist artist in Model)
             {
                 int count = artist.Artworks.Count;
+
+                @* TODO: create ternary to assign conditional classes to <tr> for errors *@
 
                 <tr>
                     <td>@artist.Id</td>
