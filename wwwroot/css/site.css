@@ -160,6 +160,22 @@ button.navlink {
     border: none;
 }
 
+.nav-link {
+    color: #B95A0A !important; /* override Bootstrap */
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    color: #FFF !important;
+    background-color: #DA8034 !important; /* override Bootstrap */
+}
+
+.border-left {
+    border-left: 4px solid #DA8034;
+    margin-left: 10px;
+    padding-left: 20px;
+}
+
 .text-danger { 
     color: #B03A2E !important; /* override Bootstrap */
     font-size: 0.9rem;

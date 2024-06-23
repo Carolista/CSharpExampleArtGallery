@@ -22,6 +22,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(
         options.Password.RequireNonAlphanumeric = false;
         options.Password.RequireUppercase = true;
         options.Password.RequireLowercase = true;
+        options.Lockout.AllowedForNewUsers = false;
     }).AddEntityFrameworkStores<ArtworkDbContext>();
 
 var app = builder.Build();
