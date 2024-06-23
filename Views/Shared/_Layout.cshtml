@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@200;400;700&family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@200;400;700&family=Assistant:wght@200;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -22,15 +22,15 @@
         <div class="nav">
             <span id="admin-portal" class="bold">
                 <a asp-controller="Home" asp-action="Index">ADMIN PORTAL</a>
-            </span> | &nbsp;
+            </span> |
             <a class="navlink" asp-controller="Artists" asp-action="Index">Artists</a>
             <a class="navlink" asp-controller="Artworks" asp-action="Index">Artworks</a>
-            <a class="navlink" asp-controller="Categories" asp-action="Index">Categories</a> | &nbsp;
+            <a class="navlink" asp-controller="Categories" asp-action="Index">Categories</a> | 
             @if (SignInManager.IsSignedIn(User))
             {
-                <a id="manage" class="navlink" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Manage Account</a>
+                <a id="manage" class="navlink fw-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Manage Account</a>
                 <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                    <button id="logout" type="submit" class="navlink">Log Out</button>
+                    <button id="logout" type="submit" class="navlink fw-light">Log Out</button>
                 </form>
             }
             else 
