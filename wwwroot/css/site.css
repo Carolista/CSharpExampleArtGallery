@@ -99,11 +99,11 @@ a:hover, a:active {
     color: #B95A0A;
 }
 
-a.navlink:link, a.navlink:visited {
+a.navlink:link, a.navlink:visited, button.navlink {
     color: white;
     font-weight: 400;
 }
-a.navlink:hover, a.navlink:active {
+a.navlink:hover, a.navlink:active, button.navlink:hover {
     text-decoration: underline;
 }
 
@@ -149,6 +149,15 @@ button {
 
 button.delete {
     background-color: #B03A2E;
+}
+
+button.navlink {
+    background-color: transparent;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
 }
 
 .text-danger { 
