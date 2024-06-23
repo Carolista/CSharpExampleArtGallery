@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CSharpExampleArtGallery;
 
+[Authorize]
 [Route("/artists")]
 public class ArtistsController : Controller
 {
@@ -14,6 +16,7 @@ public class ArtistsController : Controller
     }
 
     // Endpoint: GET http://localhost:5xxx/artists
+    [AllowAnonymous]
     [HttpGet("")]
     public IActionResult RenderArtistsPage()
     {
