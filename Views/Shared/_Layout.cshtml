@@ -12,12 +12,13 @@
 </head>
 <body>
 
+    @* TODO 11: Integrate links and logic from login partial and delete partial file *@
     <header>
         <div id="mag">Midtown Art Gallery</div>
         <div class="nav">
             <span id="admin-portal" class="bold">
                 <a asp-controller="Home" asp-action="Index">ADMIN PORTAL</a>
-            </span> | &nbsp;
+            </span> | 
             <a class="navlink" asp-controller="Artists" asp-action="Index">Artists</a>
             <a class="navlink" asp-controller="Artworks" asp-action="Index">Artworks</a>
             <a class="navlink" asp-controller="Categories" asp-action="Index">Categories</a>
@@ -30,8 +31,10 @@
         {
             <partial name="/Views/Shared/_LocalNavPartial.cshtml" />
         }
+        @* TODO 9: Temporarily add login partial to test registration functionality *@
         @RenderBody()
     </main>
 
+    @* TODO 9: Add async function call to enable scripts in Razor Pages files *@
 </body>
 </html>

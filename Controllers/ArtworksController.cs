@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CSharpExampleArtGallery;
 
+// TODO 10 - Add filtering attributes to prevent all but index from being public
 [Route("/artworks")]
 public class ArtworksController : Controller
 {
