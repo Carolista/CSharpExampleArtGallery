@@ -1,7 +1,5 @@
 using CSharpExampleArtGallery;
 using Microsoft.EntityFrameworkCore;
-// TODO 6: Un-comment the using statement below
-// using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,9 +15,10 @@ builder.Services.AddDbContext<ArtworkDbContext>(dbContextOptions =>
     dbContextOptions.UseMySql(connectionString, serverVersion)
 );
 
-// TODO 6: Un-comment the two services below
+// TODO 6: Un-comment the service below
 // builder.Services.AddRazorPages();
-// builder.Services.AddDefaultIdentity<IdentityUser>(
+
+// TODO 6: Add the following options to the AddDefaultIdentity service provided by scaffolding
 //     options => { 
 //         options.SignIn.RequireConfirmedAccount = false;
 //         options.Password.RequireDigit = true;
@@ -28,7 +27,7 @@ builder.Services.AddDbContext<ArtworkDbContext>(dbContextOptions =>
 //         options.Password.RequireUppercase = true;
 //         options.Password.RequireLowercase = true;
 //         options.Lockout.AllowedForNewUsers = false;
-//     }).AddEntityFrameworkStores<ArtworkDbContext>();
+//     }
 
 var app = builder.Build();
 

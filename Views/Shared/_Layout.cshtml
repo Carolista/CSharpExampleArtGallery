@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@200;400;700&family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@200;400;700&family=Assistant:wght@200;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -32,9 +32,11 @@
             <partial name="/Views/Shared/_LocalNavPartial.cshtml" />
         }
         @* TODO 9: Temporarily add login partial to test registration functionality *@
+        @* <partial name="_LoginPartial" /> *@
         @RenderBody()
     </main>
 
-    @* TODO 9: Add async function call to enable scripts in Razor Pages files *@
+    @* TODO 9: Un-comment async function call to enable scripts in Razor Pages files *@
+    @* @await RenderSectionAsync("Scripts", required: false) *@
 </body>
 </html>
