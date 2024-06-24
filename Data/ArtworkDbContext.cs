@@ -13,4 +13,8 @@ public class ArtworkDbContext : IdentityDbContext<IdentityUser, IdentityRole, st
 
     public ArtworkDbContext(DbContextOptions<ArtworkDbContext> options)
         : base(options) { }
+
+    // NOTE: I did not use the fluent API to configure my database table relationships
+    // But if OnModelCreating was already present and had been used in previous
+    // migrations, I would need to add base.OnModelCreating(modelBuilder) to it.
 }
