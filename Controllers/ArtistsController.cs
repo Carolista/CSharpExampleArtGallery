@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace CSharpExampleArtGallery;
 
 [Authorize]
+[ApiExplorerSettings(IgnoreApi = true)]
 [Route("/artists")]
 public class ArtistsController : Controller
 {

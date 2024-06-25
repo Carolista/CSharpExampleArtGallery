@@ -13,6 +13,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ArtworkDbContext>(dbContextOptions =>
     dbContextOptions.UseMySql(connectionString, serverVersion)
 );
+
 builder.Services.AddRazorPages();
 builder.Services.AddDefaultIdentity<IdentityUser>(
     options => { 
@@ -24,6 +25,18 @@ builder.Services.AddDefaultIdentity<IdentityUser>(
         options.Password.RequireLowercase = true;
         options.Lockout.AllowedForNewUsers = false;
     }).AddEntityFrameworkStores<ArtworkDbContext>();
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var specificOrigins = "AppOrigins";
+builder.Services.AddCors(options => {
+    // Allow Angular app to connect
+    options.AddPolicy(name: specificOrigins, policy => policy.WithOrigins("http://localhost:4200"));
+    // Allow React app to connect
+    options.AddPolicy(name: specificOrigins, policy => policy.WithOrigins("http://127.0.0.1:5173"));
+});
 
 var app = builder.Build();
 
@@ -44,6 +57,11 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapControllers();
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.UseCors(specificOrigins);
 
 app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
 
