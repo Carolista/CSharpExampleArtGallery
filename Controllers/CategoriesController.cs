@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CSharpExampleArtGallery;
 
+// TODO 7: Add attribute to exclude from Swagger Docs
 [Authorize]
 [Route("/categories")]
 public class CategoriesController : Controller
